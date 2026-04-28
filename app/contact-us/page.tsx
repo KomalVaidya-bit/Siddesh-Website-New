@@ -42,7 +42,12 @@ export default function Page() {
 
 function handleChange(
   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-) {    const { name, value, type, checked } = e.target;
+) {    
+  
+  const { name, value, type, checked } = e.target;
+
+    const checked = (e.target as HTMLInputElement).checked;
+
     if (name === "schedule") {
       setForm((prev) => ({
         ...prev,
