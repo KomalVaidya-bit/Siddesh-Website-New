@@ -1,3 +1,23 @@
+// "use client";
+// // Animation variants
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 40 },
+//   visible: (i = 1) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: { delay: i * 0.15, duration: 0.7, ease: [0.4, 0, 0.2, 1] },
+//   }),
+// };
+// const slideLeft = {
+//   hidden: { opacity: 0, x: 60 },
+//   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
+// };
+// const slideRight = {
+//   hidden: { opacity: 0, x: -60 },
+//   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
+// };
+
+
 "use client";
 
 // Animation variants
@@ -6,7 +26,11 @@ const fadeUp = {
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: "easeInOut" },
+    transition: {
+      delay: i * 0.15,
+      duration: 0.7,
+      ease: "easeInOut",
+    },
   }),
 };
 
@@ -15,7 +39,10 @@ const slideLeft = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeInOut" },
+    transition: {
+      duration: 0.7,
+      ease: "easeInOut",
+    },
   },
 };
 
@@ -24,9 +51,13 @@ const slideRight = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.7, ease: "easeInOut" },
+    transition: {
+      duration: 0.7,
+      ease: "easeInOut",
+    },
   },
 };
+
 // Stats for counters
 const stats = [
   { label: "Schools", value: 120 },
