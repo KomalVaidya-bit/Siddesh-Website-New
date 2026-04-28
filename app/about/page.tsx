@@ -14,7 +14,7 @@ const fadeUp = {
     transition: {
       delay: i * 0.15,
       duration: 0.7,
-      ease: "easeInOut",
+ease: "easeInOut" as any ,
     },
   }),
 };
@@ -26,7 +26,7 @@ const slideLeft = {
     x: 0,
     transition: {
       duration: 0.7,
-      ease: "easeInOut",
+      ease: "easeInOut" as any,
     },
   },
 };
@@ -38,7 +38,7 @@ const slideRight = {
     x: 0,
     transition: {
       duration: 0.7,
-      ease: "easeInOut",
+      ease: "easeInOut" as any ,
     },
   },
 };
