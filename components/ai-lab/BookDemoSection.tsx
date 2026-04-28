@@ -60,8 +60,7 @@ export default function DemoSection() {
               e.preventDefault();
               setSuccess(true);
               setTimeout(() => setSuccess(false), 4000);
-              e.target.reset && e.target.reset();
-            }}
+                 (e.target as HTMLFormElement).reset();            }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
