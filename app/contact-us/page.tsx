@@ -1,6 +1,6 @@
 
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 const initialForm = {
@@ -40,8 +40,9 @@ export default function Page() {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
-  function handleChange(e) {
-    const { name, value, type, checked } = e.target;
+function handleChange(
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+) {    const { name, value, type, checked } = e.target;
     if (name === "schedule") {
       setForm((prev) => ({
         ...prev,
@@ -68,8 +69,7 @@ export default function Page() {
     }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {    e.preventDefault();
     let newErrors = {};
     if (!form.fullName) newErrors.fullName = "Full Name is required.";
     if (!form.email) newErrors.email = "Email is required.";
