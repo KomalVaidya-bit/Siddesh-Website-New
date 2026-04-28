@@ -3,7 +3,8 @@
 
 "use client";
 
-import { Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
+
 
 const slideLeft: Variants = {
   hidden: { opacity: 0, x: 60 },
