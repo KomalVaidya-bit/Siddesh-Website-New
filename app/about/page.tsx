@@ -6,8 +6,7 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 
 // Animation variants
-
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
     opacity: 1,
@@ -17,6 +16,28 @@ const fadeUp = {
       duration: 0.7
     },
   }),
+};
+
+const slideLeft: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.7
+    },
+  },
+};
+
+const slideRight: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.7
+    },
+  },
 };
 
 
@@ -57,27 +78,6 @@ const fadeUp = {
 //   },
 // };
 
-const slideLeft = {
-  hidden: { opacity: 0, x: 60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7
-    },
-  },
-};
-
-const slideRight = {
-  hidden: { opacity: 0, x: -60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7
-    },
-  },
-};
 
 
 // Stats for counters
