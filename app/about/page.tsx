@@ -6,43 +6,39 @@
 
 
 // Animation variants
-const fadeUp = {
+const slideLeft: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.7
+    },
+  },
+};
+
+const slideRight: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.7
+    },
+  },
+};
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
     opacity: 1,
     y: 0,
     transition: {
       delay: i * 0.15,
-      duration: 0.7,
-ease: "easeInOut" as any ,
+      duration: 0.7
     },
   }),
 };
-
-const slideLeft = {
-  hidden: { opacity: 0, x: 60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeInOut" as any,
-    },
-  },
-};
-
-const slideRight = {
-  hidden: { opacity: 0, x: -60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeInOut" as any ,
-    },
-  },
-};
-
 // Stats for counters
 const stats = [
   { label: "Schools", value: 120 },
