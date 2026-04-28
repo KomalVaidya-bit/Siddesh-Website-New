@@ -3,7 +3,10 @@
 
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import React from "react";
+import Image from "next/image";
+import { motion, Variants } from "framer-motion";  // ✅ THIS LINE IMPORTANT
+import Link from "next/link";
 
 
 const slideLeft: Variants = {
@@ -46,10 +49,7 @@ const stats = [
   { label: "Projects", value: 250 },
   { label: "Years", value: 8 },
 ];
-import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import Link from "next/link";
+
 
 const offers = [
   {
