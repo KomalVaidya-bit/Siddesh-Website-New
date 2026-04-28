@@ -6,42 +6,79 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 
 // Animation variants
-const fadeUp: Variants = {
+
+const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: (i: number = 1) => ({
+  visible: (i = 1) => ({
     opacity: 1,
     y: 0,
     transition: {
       delay: i * 0.15,
-      duration: 0.7,
-      ease: "easeInOut",
+      duration: 0.7
     },
   }),
 };
 
-const slideLeft: Variants = {
+
+// const fadeUp: Variants = {
+//   hidden: { opacity: 0, y: 40 },
+//   visible: (i: number = 1) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       delay: i * 0.15,
+//       duration: 0.7,
+//       ease: "easeInOut",
+//     },
+//   }),
+// };
+
+// const slideLeft: Variants = {
+//   hidden: { opacity: 0, x: 60 },
+//   visible: {
+//     opacity: 1,
+//     x: 0,
+//     transition: {
+//       duration: 0.7,
+//       ease: "easeInOut",
+//     },
+//   },
+// };
+
+// const slideRight: Variants = {
+//   hidden: { opacity: 0, x: -60 },
+//   visible: {
+//     opacity: 1,
+//     x: 0,
+//     transition: {
+//       duration: 0.7,
+//       ease: "easeInOut",
+//     },
+//   },
+// };
+
+const slideLeft = {
   hidden: { opacity: 0, x: 60 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.7,
-      ease: "easeInOut",
+      duration: 0.7
     },
   },
 };
 
-const slideRight: Variants = {
+const slideRight = {
   hidden: { opacity: 0, x: -60 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.7,
-      ease: "easeInOut",
+      duration: 0.7
     },
   },
 };
+
 
 // Stats for counters
 const stats = [
