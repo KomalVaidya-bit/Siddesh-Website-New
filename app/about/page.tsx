@@ -5,11 +5,12 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";  // ✅ THIS LINE IMPORTANT
+// ✅ NEW
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 
-const slideLeft: Variants = {
+const slideLeft = {
   hidden: { opacity: 0, x: 60 },
   visible: {
     opacity: 1,
@@ -20,7 +21,7 @@ const slideLeft: Variants = {
   },
 };
 
-const slideRight: Variants = {
+const slideRight = {
   hidden: { opacity: 0, x: -60 },
   visible: {
     opacity: 1,
@@ -31,7 +32,7 @@ const slideRight: Variants = {
   },
 };
 
-const fadeUp: Variants = {
+const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
     opacity: 1,
