@@ -1,6 +1,11 @@
+// 
+
+
+
+
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -15,18 +20,14 @@ const labsItems = [
   { label: "Geography Lab", href: "/labs/geography-lab" },
 ];
 
-
-
 const menuItems = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" }, // Updated to point to new About page
+  { label: "About Us", href: "/about" },
   { label: "Labs", href: "/labs", hasDropdown: true },
   { label: "Our Products", href: "/our-products" },
   { label: "Social Initiatives", href: "/social-initiatives" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact-us" },
-
-  
 ];
 
 const dropdownMotion = {
@@ -55,18 +56,39 @@ type NavbarProps = {
   overlay?: boolean;
 };
 
-export default function Navbar({ floating = false, overlay = false }: NavbarProps) {
+export default function Navbar({
+  floating = false,
+  overlay = false,
+}: NavbarProps) {
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileLabsOpen, setMobileLabsOpen] = useState(false);
   const [desktopLabsOpen, setDesktopLabsOpen] = useState(false);
 
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   return (
     <>
       <header
-        className={`w-full ${floating ? "fixed inset-x-0 top-0 z-50" : "sticky top-0 z-50"}`}
+        className={`w-full ${
+          floating
+            ? "fixed inset-x-0 top-0 z-50"
+            : "sticky top-0 z-50"
+        }`}
       >
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 md:px-6">
+
           <nav className="relative flex w-full items-center justify-between rounded-2xl border border-white/30 bg-white/70 px-4 py-0.5 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur">
+
+            {/* LOGO */}
             <Link
               href="/"
               className="flex items-center gap-2 text-lg font-semibold tracking-tight text-[#20306f]"
@@ -79,11 +101,15 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
                 className="max-h-20 md:max-h-24 w-auto object-contain"
                 priority
               />
+
               <span className="sr-only">Siddesh</span>
             </Link>
 
+            {/* DESKTOP MENU */}
             <div className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
+
               {menuItems.map((item) => {
+
                 if (item.hasDropdown) {
                   return (
                     <div
@@ -92,10 +118,13 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
                       onMouseEnter={() => setDesktopLabsOpen(true)}
                       onMouseLeave={() => setDesktopLabsOpen(false)}
                     >
+
                       <button
                         type="button"
                         className="flex items-center gap-1 rounded-lg px-2 py-1 text-slate-700 transition-colors hover:text-[#3B5BDB]"
-                        onClick={() => setDesktopLabsOpen((prev) => !prev)}
+                        onClick={() =>
+                          setDesktopLabsOpen((prev) => !prev)
+                        }
                         aria-expanded={desktopLabsOpen}
                       >
                         {item.label}
@@ -108,13 +137,16 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
                             {...dropdownMotion}
                             className="absolute right-0 top-full mt-3 w-64 rounded-2xl border border-white/60 bg-white/95 p-2 shadow-[0_18px_45px_rgba(15,23,42,0.2)] backdrop-blur"
                           >
+
                             <div className="flex flex-col gap-1">
                               {labsItems.map((lab) => (
                                 <Link
                                   key={lab.label}
                                   href={lab.href}
                                   className="rounded-xl px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                                  onClick={() => setDesktopLabsOpen(false)}
+                                  onClick={() =>
+                                    setDesktopLabsOpen(false)
+                                  }
                                 >
                                   {lab.label}
                                 </Link>
@@ -137,8 +169,48 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
                   </Link>
                 );
               })}
+
+              {/* LOGIN BUTTON */}
+              {!user ? (
+                <div className="flex items-center gap-3">
+
+                  <Link
+                    href="/login"
+                    className="rounded-xl border border-slate-200 px-5 py-2 font-semibold text-slate-700 transition hover:bg-slate-100"
+                  >
+                    Login
+                  </Link>
+
+                  <Link
+                    href="/register"
+                    className="rounded-xl bg-gradient-to-r from-[#3B5BDB] to-indigo-700 px-5 py-2 font-semibold text-white shadow-md transition hover:opacity-90"
+                  >
+                    Register
+                  </Link>
+
+                </div>
+              ) : (
+                <div className="flex items-center gap-3">
+
+                  <span className="font-semibold text-[#20306f]">
+                    Hi, {user.name}
+                  </span>
+
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("user");
+                      window.location.reload();
+                    }}
+                    className="rounded-xl bg-red-500 px-4 py-2 text-white transition hover:bg-red-600"
+                  >
+                    Logout
+                  </button>
+
+                </div>
+              )}
             </div>
 
+            {/* MOBILE MENU BUTTON */}
             <button
               type="button"
               className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:text-[#3B5BDB] md:hidden"
@@ -147,20 +219,41 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
               aria-expanded={mobileOpen}
             >
               {mobileOpen ? (
-                // X icon
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               ) : (
-                // Hamburger icon
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-6 w-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               )}
             </button>
           </nav>
         </div>
 
+        {/* MOBILE OVERLAY */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -171,84 +264,155 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
           )}
         </AnimatePresence>
 
+        {/* MOBILE SIDEBAR */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.aside
               {...mobilePanelMotion}
               className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col gap-4 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.25)] md:hidden"
             >
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold text-[#20306f]">Siddesh</span>
-              <button
-                type="button"
-                className="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600"
-                onClick={() => setMobileOpen(false)}
-              >
-                X
-              </button>
-            </div>
 
-            <div className="flex flex-col gap-1 text-sm font-medium text-slate-700">
-              {menuItems.map((item) => {
-                if (item.hasDropdown) {
-                  return (
-                    <div key={item.label} className="flex flex-col">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                        onClick={() => setMobileLabsOpen((prev) => !prev)}
-                        aria-expanded={mobileLabsOpen}
+              <div className="flex items-center justify-between">
+                <span className="text-lg font-semibold text-[#20306f]">
+                  Siddesh
+                </span>
+
+                <button
+                  type="button"
+                  className="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  X
+                </button>
+              </div>
+
+              <div className="flex flex-col gap-1 text-sm font-medium text-slate-700">
+
+                {menuItems.map((item) => {
+
+                  if (item.hasDropdown) {
+                    return (
+                      <div
+                        key={item.label}
+                        className="flex flex-col"
                       >
-                        <span>{item.label}</span>
-                        <span className="text-xs">{mobileLabsOpen ? "▴" : "▾"}</span>
-                      </button>
 
-                      <AnimatePresence>
-                        {mobileLabsOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2, ease: "easeOut" as const }}
-                            className="overflow-hidden"
-                          >
-                            <div className="mt-2 flex flex-col gap-1 pl-2">
-                              {labsItems.map((lab) => (
-                                <Link
-                                  key={lab.label}
-                                  href={lab.href}
-                                  className="rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                                  onClick={() => setMobileOpen(false)}
-                                >
-                                  {lab.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                        <button
+                          type="button"
+                          className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
+                          onClick={() =>
+                            setMobileLabsOpen((prev) => !prev)
+                          }
+                          aria-expanded={mobileLabsOpen}
+                        >
+                          <span>{item.label}</span>
+
+                          <span className="text-xs">
+                            {mobileLabsOpen ? "▴" : "▾"}
+                          </span>
+                        </button>
+
+                        <AnimatePresence>
+                          {mobileLabsOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{
+                                height: "auto",
+                                opacity: 1,
+                              }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{
+                                duration: 0.2,
+                                ease: "easeOut" as const,
+                              }}
+                              className="overflow-hidden"
+                            >
+
+                              <div className="mt-2 flex flex-col gap-1 pl-2">
+                                {labsItems.map((lab) => (
+                                  <Link
+                                    key={lab.label}
+                                    href={lab.href}
+                                    className="rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
+                                    onClick={() =>
+                                      setMobileOpen(false)
+                                    }
+                                  >
+                                    {lab.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="rounded-xl px-3 py-2 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
                   );
-                }
+                })}
 
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="rounded-xl px-3 py-2 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
+                {/* MOBILE LOGIN / REGISTER */}
+                {!user ? (
+                  <div className="mt-4 flex flex-col gap-3">
+
+                    <Link
+                      href="/login"
+                      className="rounded-xl border border-slate-200 px-4 py-3 text-center font-semibold"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Login
+                    </Link>
+
+                    <Link
+                      href="/register"
+                      className="rounded-xl bg-gradient-to-r from-[#3B5BDB] to-indigo-700 px-4 py-3 text-center font-semibold text-white"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Register
+                    </Link>
+
+                  </div>
+                ) : (
+                  <div className="mt-4 flex flex-col gap-3">
+
+                    <div className="rounded-xl bg-slate-100 px-4 py-3 font-semibold text-[#20306f]">
+                      Hi, {user.name}
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        localStorage.removeItem("user");
+                        window.location.reload();
+                      }}
+                      className="rounded-xl bg-red-500 px-4 py-3 font-semibold text-white"
+                    >
+                      Logout
+                    </button>
+
+                  </div>
+                )}
+              </div>
             </motion.aside>
           )}
         </AnimatePresence>
       </header>
 
-      {floating && !overlay ? <div className="h-[88px] sm:h-[96px] md:h-[104px]" aria-hidden /> : null}
+      {floating && !overlay ? (
+        <div
+          className="h-[88px] sm:h-[96px] md:h-[104px]"
+          aria-hidden
+        />
+      ) : null}
     </>
   );
 }
