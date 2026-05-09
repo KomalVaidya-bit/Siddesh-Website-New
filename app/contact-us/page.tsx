@@ -299,34 +299,191 @@
 
 
 
-
-// app/contact/page.tsx
-
 "use client"
-import Layout from "@/components/our-product/layout"
+
+import { useState } from "react"
 
 export default function ContactPage() {
+
+  const [name, setName] =
+    useState("")
+
+  const [email, setEmail] =
+    useState("")
+
+  const [subject, setSubject] =
+    useState("")
+
+  const [message, setMessage] =
+    useState("")
+
+  const handleSubmit = async () => {
+
+    if (
+      !name ||
+      !email ||
+      !subject ||
+      !message
+    ) {
+
+      alert("Fill all fields")
+
+      return
+    }
+
+    await fetch("/api/messages", {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type":
+          "application/json",
+      },
+
+      body: JSON.stringify({
+        name,
+        email,
+        subject,
+        message,
+      }),
+    })
+
+    alert(
+      "Message Sent Successfully ✅"
+    )
+
+    setName("")
+    setEmail("")
+    setSubject("")
+    setMessage("")
+  }
+
   return (
-    <Layout>
-      <div className="max-w-xl mx-auto text-center">
-        <h1 className="text-3xl font-bold">
-          Contact Us
-        </h1>
-        <p className="text-gray-500 mt-2">
-          Have questions? We’d love to hear from you.
-        </p>
+
+    <div className="min-h-screen bg-[#f5f7fb] py-20 px-6">
+
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+
+        {/* LEFT */}
+
+        <div>
+
+          <p className="text-blue-600 font-semibold uppercase tracking-widest">
+
+            Contact Us
+
+          </p>
+
+          <h1 className="text-5xl font-extrabold text-gray-900 mt-4 leading-tight">
+
+            Let’s Build
+            Future-Ready
+            Learning Together
+
+          </h1>
+
+          <p className="text-gray-500 mt-8 text-lg leading-8">
+
+            Reach out to Siddesh Technologies
+            for innovative educational kits,
+            AI learning solutions and
+            immersive technology experiences.
+
+          </p>
+
+          <div className="mt-10 space-y-5">
+
+            <div className="bg-white shadow-sm rounded-2xl p-5">
+
+              <p className="text-gray-400 text-sm">
+                Email
+              </p>
+
+              <h3 className="text-xl font-semibold mt-2">
+                hello@siddeshtechnologies.com
+              </h3>
+
+            </div>
+
+            <div className="bg-white shadow-sm rounded-2xl p-5">
+
+              <p className="text-gray-400 text-sm">
+                Phone
+              </p>
+
+              <h3 className="text-xl font-semibold mt-2">
+                +91 98765 43210
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* RIGHT FORM */}
+
+        <div className="bg-white shadow-xl rounded-[35px] p-10">
+
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">
+
+            Send Message
+
+          </h2>
+
+          <div className="space-y-5">
+
+            <input
+              value={name}
+              onChange={(e) =>
+                setName(e.target.value)
+              }
+              placeholder="Full Name"
+              className="w-full border border-gray-200 rounded-2xl p-5 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <input
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+              placeholder="Email Address"
+              className="w-full border border-gray-200 rounded-2xl p-5 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <input
+              value={subject}
+              onChange={(e) =>
+                setSubject(e.target.value)
+              }
+              placeholder="Subject"
+              className="w-full border border-gray-200 rounded-2xl p-5 outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            <textarea
+              value={message}
+              onChange={(e) =>
+                setMessage(e.target.value)
+              }
+              placeholder="Write your message..."
+              className="w-full border border-gray-200 rounded-2xl p-5 outline-none focus:ring-2 focus:ring-blue-500 h-40"
+            />
+
+            <button
+              onClick={handleSubmit}
+              className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-5 rounded-2xl text-lg font-semibold hover:opacity-90 transition"
+            >
+
+              Send Message
+
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <form className="max-w-xl mx-auto mt-10 space-y-4">
-        <input placeholder="Name" className="input" />
-        <input placeholder="Email" className="input" />
-        <input placeholder="Mobile" className="input" />
-        <textarea placeholder="Message" className="input h-28" />
-
-        <button className="w-full bg-black text-white py-3 rounded-xl">
-          Send Message
-        </button>
-      </form>
-    </Layout>
+    </div>
   )
 }
