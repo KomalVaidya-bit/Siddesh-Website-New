@@ -44,3 +44,28 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* globals.css */
+
+.input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  border-radius: 12px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: black;
+}

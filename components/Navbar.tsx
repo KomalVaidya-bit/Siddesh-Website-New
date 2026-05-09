@@ -25,6 +25,8 @@ const menuItems = [
   { label: "Social Initiatives", href: "/social-initiatives" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact-us" },
+
+  
 ];
 
 const dropdownMotion = {

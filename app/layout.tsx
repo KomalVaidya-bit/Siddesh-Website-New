@@ -5,6 +5,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "./globals.css";
 
+import { CartProvider } from "@/context/CartContext"
+
+
+
+
+
 const sora = Sora({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -22,11 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={sora.className}>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+      <body>
+  <CartProvider>
+    {children}
+  </CartProvider>
+</body>
     </html>
   );
 }
+
+
+
