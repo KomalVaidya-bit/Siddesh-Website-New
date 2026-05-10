@@ -742,63 +742,163 @@ import Layout from "@/components/our-product/layout"
 import CartDrawer from "@/components/cart/CartDrawer"
 import { useCart } from "@/context/CartContext"
 import { useRouter } from "next/navigation"
+
+
+export const dynamic = "force-static"
 export default function ProductsPage() {
   const [products, setProducts] = useState<any[]>([])
   const [openCart, setOpenCart] = useState(false)
+
+  const [showAuthPopup, setShowAuthPopup] =
+  useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const { addToCart, cart } = useCart()
   const router = useRouter()
-  const handleProtectedAction = (callback: () => void) => {
-    const token = localStorage.getItem("token")
+  const handleProtectedAction = (
+  callback: () => void
+) => {
 
-    console.log("TOKEN =", token)
+  const token =
+    localStorage.getItem("user")
 
-    if (!token || token === "undefined" || token === "null") {
-      router.push("/login")
-      return
-    }
+  // NOT LOGGED IN
+  if (!token) {
 
-    callback()
+    setShowAuthPopup(true)
+
+    return
   }
-  useEffect(() => {
-    const token = localStorage.getItem("user")
 
-    if (token) {
-      setIsLoggedIn(true)
-    }
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length === 0) {
-          setProducts([
-            {
-              _id: "1",
-              name: "IoT Smart Kit",
-              price: 4999,
-              description:
-                "Advanced learning kit for IoT projects and automation.",
-            },
-            {
-              _id: "2",
-              name: "AI Learning Board",
-              price: 7999,
-              description:
-                "Professional AI starter board for students and labs.",
-            },
-            {
-              _id: "3",
-              name: "Robotics Kit",
-              price: 9999,
-              description:
-                "Hands-on robotics and embedded systems development kit.",
-            },
-          ])
-        } else {
-          setProducts(data)
-        }
-      })
-  }, [])
+  callback()
+}
+  useEffect(() => {
+
+  const token =
+    localStorage.getItem("user")
+
+  if (token) {
+
+    setIsLoggedIn(true)
+  }
+
+  // CHECK LOCAL CACHE FIRST
+  const cachedProducts =
+    localStorage.getItem("products")
+
+  if (cachedProducts) {
+
+    setProducts(
+      JSON.parse(cachedProducts)
+    )
+  }
+
+  // FETCH LATEST PRODUCTS
+  fetch("/api/products")
+
+    .then((res) => res.json())
+
+    .then((data) => {
+
+      let finalProducts = data
+
+      // DEFAULT PRODUCTS
+      if (data.length === 0) {
+
+        finalProducts = [
+          {
+            _id: "1",
+            name: "IoT Smart Kit",
+            price: 4999,
+            description:
+              "Advanced learning kit for IoT projects and automation.",
+          },
+
+          {
+            _id: "2",
+            name: "AI Learning Board",
+            price: 7999,
+            description:
+              "Professional AI starter board for students and labs.",
+          },
+
+          {
+            _id: "3",
+            name: "Robotics Kit",
+            price: 9999,
+            description:
+              "Hands-on robotics and embedded systems development kit.",
+          },
+        ]
+      }
+
+      // SET PRODUCTS
+      setProducts(finalProducts)
+
+      // SAVE CACHE
+      localStorage.setItem(
+        "products",
+        JSON.stringify(finalProducts)
+      )
+    })
+
+}, [])
   return (
+
+<>
+  {showAuthPopup && (
+
+    <div className="fixed inset-0 bg-black/40 z-[100] flex items-center justify-center px-6">
+
+      <div className="bg-white rounded-3xl p-10 max-w-md w-full text-center shadow-2xl">
+
+        <h2 className="text-3xl font-bold text-gray-900">
+          Login Required
+        </h2>
+
+        <p className="text-gray-500 mt-4 leading-7">
+          Please login if you already have
+          an account or register as a new user.
+        </p>
+
+        <div className="flex gap-4 mt-8">
+
+          <button
+            onClick={() =>
+              (window.location.href = "/login")
+            }
+            className="flex-1 bg-black text-white py-4 rounded-2xl font-semibold"
+          >
+            Login
+          </button>
+
+          <button
+            onClick={() =>
+              (window.location.href = "/register")
+            }
+            className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-4 rounded-2xl font-semibold"
+          >
+            Register
+          </button>
+
+        </div>
+
+        <button
+          onClick={() =>
+            setShowAuthPopup(false)
+          }
+          className="mt-6 text-gray-500"
+        >
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+  )}
+  
+
+
     <Layout>
       {isLoggedIn && (
         <CartDrawer open={openCart} setOpen={setOpenCart} />
@@ -857,21 +957,29 @@ export default function ProductsPage() {
 
               {/* Buttons */}
               <div className="flex gap-3 mt-8">
-                <button
-                  onClick={() =>
-                    handleProtectedAction(() => {
-                      setOpenCart(true)
-                    })
-                  }
-                  className="mt-6 bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"
-                >
-                  Add to Cart ({cart.length})
-                </button>
+               <button
+  onClick={() =>
+    handleProtectedAction(() => {
+      addToCart(p)
+      setOpenCart(true)
+    })
+  }
+  className="mt-6 bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"
+>
+  Add to Cart (
+  {
+    cart.find(
+      (item: any) => item._id === p._id
+    )?.quantity || 0
+  }
+  )
+</button>
 
                 <button
                   onClick={() =>
-                    (window.location.href = `/checkout?name=${p.name}&price=${p.price}`)
-                  }
+router.push(
+  `/checkout?name=${p.name}&price=${p.price}`
+)                  }
                   className="flex-1 bg-gradient-to-r from-blue-900 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:scale-105 transition"
                 >
                   Buy Now
@@ -882,6 +990,8 @@ export default function ProductsPage() {
         ))}
       </section>
     </Layout>
+
+     </>
   )
 }
 

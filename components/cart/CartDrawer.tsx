@@ -171,6 +171,16 @@ export default function CartDrawer({
 
         router.push("/cart")
     }
+ const handleCart = () => {
+        const user = localStorage.getItem("user")
+
+        if (!user) {
+            router.push("/login")
+            return
+        }
+
+        router.push("/checkout")
+    }
 
     return (
         <>
@@ -272,7 +282,13 @@ items-center justify-center"
                         onClick={handleCheckout}
                         className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-4 rounded-2xl font-semibold text-lg hover:opacity-90 transition"
                     >
-                        View Cart & Checkout
+                        View Cart 
+                    </button>
+                     <button
+                        onClick={handleCart}
+                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-4 rounded-2xl font-semibold text-lg hover:opacity-90 transition"
+                    >
+                        Checkout
                     </button>
                 </div>
                 7

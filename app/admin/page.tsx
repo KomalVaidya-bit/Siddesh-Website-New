@@ -676,14 +676,15 @@ export default function AdminPage() {
 
   useEffect(() => {
 
-    const admin =
-      localStorage.getItem("admin")
+    const user = JSON.parse(
+  localStorage.getItem("user") || "null"
+)
 
-    if (!admin) {
+if (!user || user.role !== "admin") {
 
-      router.push("/admin/login")
+  router.push("/admin")
 
-    }
+}
 
     fetchProducts()
     fetchUsers()
