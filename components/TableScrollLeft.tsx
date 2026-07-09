@@ -171,9 +171,8 @@ export default function TableScrollLeft({
 
         {/* GRID */}
         <div
-          className={`grid min-w-0 items-center gap-8 md:min-h-screen md:gap-10 ${
-            hideText && tableOnRight ? "md:grid-cols-[0.22fr_1.78fr]" : "md:grid-cols-[1.08fr_0.92fr]"
-          }`}
+          className={`grid min-w-0 items-center gap-8 md:min-h-screen md:gap-10 ${hideText && tableOnRight ? "md:grid-cols-[0.22fr_1.78fr]" : "md:grid-cols-[1.08fr_0.92fr]"
+            }`}
         >
 
           {/* LEFT TABLE */}
@@ -189,49 +188,47 @@ export default function TableScrollLeft({
               className={`mx-auto min-w-0 max-w-2xl space-y-3 text-center md:max-w-none md:space-y-4 ${tableOnRight ? "md:order-1 md:mx-0 md:text-left" : "md:order-2 md:mx-0 md:text-left"}`}
             >
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2F5AA8] leading-[1.15]">
-              Discover AI and Mechatronics Innovation Lab
-            </h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2F5AA8] leading-[1.15]">
+                Discover ThinkSphere 360 Composite Skill Lab
+              </h2>
 
-            <div className="h-[3px] w-16 bg-[#2563eb] mx-auto md:mx-0"></div>
+              <div className="h-[3px] w-16 bg-[#2563eb] mx-auto md:mx-0"></div>
 
-            <p className="text-[#1f2d2b] leading-[1.55] text-[0.98rem] sm:text-[1.02rem]">
-              Interactive AI and Mechatronics Innovation Lab for schools to empower students
-              with experiential learning with DIY robotics kit, Iot Training Kit and AI
-              platform, practical activity books and annual innovation fest.
-            </p>
+              <p className="text-[#1f2d2b] leading-[1.55] text-[0.98rem] sm:text-[1.02rem]">
+                ThinkSphere 360 Composite Skill Lab is a complete future-ready learning ecosystem designed for schools. It empowers students through hands-on learning in Artificial Intelligence, Robotics, IoT, Drone Technology, AR/VR, Mixed Reality and 3D Printing while building innovation, creativity and problem-solving skills aligned with NEP 2020.
+              </p>
 
-            <p className="text-[#2F5AA8] font-semibold text-[1.4rem] md:text-[1.6rem] leading-none">
-              Modules 
-            </p>
+              <p className="text-[#2F5AA8] font-semibold text-[1.4rem] md:text-[1.6rem] leading-none">
+                Learning Modules
+              </p>
               {hideText && tableOnRight ? <div className="hidden md:block md:order-1" aria-hidden /> : null}
 
 
-            <button className="rounded-2xl bg-[#2F5AA8] hover:bg-[#1d4ed8] transition-all duration-300 px-6 py-2.5 text-white text-base sm:text-lg font-bold shadow-md w-full sm:w-auto">
-              What's Covered
-            </button>
+              <button className="rounded-2xl bg-[#2F5AA8] hover:bg-[#1d4ed8] transition-all duration-300 px-6 py-2.5 text-white text-base sm:text-lg font-bold shadow-md w-full sm:w-auto">
+                Explore Modules
+              </button>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 pt-0.5">
-              {[
-                "Basic Electronics Exploration Kit",
-                "Robotics Starter Kit",
-                "Robotics Arms Kit",
-                "Iot Training Kit",
-                "DIY Iot Kit",
-                "Rc Drone",
-                "DIY Drone Kit",
-                 "VR/AR Experience Kit",
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 pt-0.5">
+                {[
+                  "Basic Electronics Exploration Kit",
+                  "Robotics Starter Kit",
+                  "Robotics Arms Kit",
+                  "Iot Training Kit",
+                  "DIY Iot Kit",
+                  "Rc Drone",
+                  "DIY Drone Kit",
+                  "VR/AR Experience Kit",
 
 
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="block w-full break-words rounded-2xl bg-[#c9dde9] px-2.5 sm:px-3 py-1.5 text-center text-sm sm:text-base font-semibold text-[#1e3a8a]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="block w-full break-words rounded-2xl bg-[#c9dde9] px-2.5 sm:px-3 py-1.5 text-center text-sm sm:text-base font-semibold text-[#1e3a8a]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
 
             </div>
           ) : null}

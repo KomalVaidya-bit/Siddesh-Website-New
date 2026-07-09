@@ -5,6 +5,7 @@ import ContentSections from "../components/ContentSections";
 import Highlight from "../components/Highlight";
 import Pricing from "../components/Pricing";
 import CTA from "../components/CTA";
+import WhyChooseThinkSphere from "@/components/ai-lab/WhyChooseThinkSphere";
 
 export default function Page() {
   return (
@@ -13,6 +14,7 @@ export default function Page() {
       <Hero />
       <Features />
       <ContentSections />
+      <WhyChooseThinkSphere />
       <Highlight />
       <Pricing />
       <CTA />

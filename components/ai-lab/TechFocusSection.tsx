@@ -1,537 +1,321 @@
-// "use client";
-
-// import { useEffect, useRef } from "react";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// export default function TechFocusSection() {
-//   const sectionRef = useRef<HTMLDivElement | null>(null);
-
-//   useEffect(() => {
-//     gsap.registerPlugin(ScrollTrigger);
-
-//     const cards = gsap.utils.toArray(".tech-card");
-
-//     // 🔥 Scroll Animation
-//     gsap.from(cards, {
-//       y: 100,
-//       opacity: 0,
-//       duration: 1,
-//       stagger: 0.2,
-//       ease: "power3.out",
-//       scrollTrigger: {
-//         trigger: sectionRef.current,
-//         start: "top 85%",
-//       },
-//     });
-
-//     // 🔥 Parallax Effect
-//     gsap.to(cards, {
-//       y: (i) => (i % 2 === 0 ? -30 : -60),
-//       scrollTrigger: {
-//         trigger: sectionRef.current,
-//         start: "top bottom",
-//         end: "bottom top",
-//         scrub: true,
-//       },
-//     });
-
-//     // 🔥 3D Tilt Effect
-//     const cardElements = document.querySelectorAll(".tech-card");
-
-//     cardElements.forEach((card) => {
-//       const el = card as HTMLElement;
-
-//       el.addEventListener("mousemove", (e: MouseEvent) => {
-//         const rect = el.getBoundingClientRect();
-
-//         const x = e.clientX - rect.left;
-//         const y = e.clientY - rect.top;
-
-//         const rotateX = -(y - rect.height / 2) / 20;
-//         const rotateY = (x - rect.width / 2) / 20;
-
-//         el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-//       });
-
-//       el.addEventListener("mouseleave", () => {
-//         el.style.transform = "rotateX(0) rotateY(0) scale(1)";
-//       });
-//     });
-
-//   }, []);
-
-//   return (
-//     <section ref={sectionRef} className="bg-[#eff6ff] py-16 px-4">
-//       <div className="max-w-6xl mx-auto text-center">
-//         <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a]">
-//           Technologies in Focus for Inclusive AI Innovation
-//         </h2>
-
-//         <p className="mt-4 text-[#475569] max-w-3xl mx-auto">
-//           Learn cutting-edge technologies through hands-on kits and real-world applications.
-//         </p>
-//       </div>
-
-//       {/* CARDS */}
-//       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-//         {[
-//           "Coding - Graphical & Python",
-//           "Self Driving Technology",
-//           "Robotics with AI",
-//           "AI and Machine Learning",
-//           "STEM and Tinkering",
-//           "Industry and Automation",
-//         ].map((title, index) => (
-//           <div
-//             key={index}
-//             className="tech-card bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 transform perspective-[1000px] hover:shadow-[0_20px_50px_rgba(37,99,235,0.25)]"
-//           >
-//             <img
-//               src="/ai-innovation-images/virtualimg.jpg"
-//               alt="tech"
-//               className="w-full h-48 object-cover transition duration-500 hover:scale-110"
-//             />
-            
-
-//             <div className="p-4 text-center font-semibold text-[#1e293b]">
-//               {title}
-//             </div>
-//           </div>
-//         ))}
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-// "use client";
-
-// import { useEffect, useRef } from "react";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// export default function TechFocusSection() {
-//   const sectionRef = useRef<HTMLDivElement | null>(null);
-
-//   useEffect(() => {
-//     gsap.registerPlugin(ScrollTrigger);
-
-//     const cards = gsap.utils.toArray(".tech-card");
-
-//     gsap.from(cards, {
-//       y: 100,
-//       opacity: 0,
-//       duration: 1,
-//       stagger: 0.2,
-//       ease: "power3.out",
-//       scrollTrigger: {
-//         trigger: sectionRef.current,
-//         start: "top 85%",
-//       },
-//     });
-
-//     gsap.to(cards, {
-//       y: (i) => (i % 2 === 0 ? -30 : -60),
-//       scrollTrigger: {
-//         trigger: sectionRef.current,
-//         start: "top bottom",
-//         end: "bottom top",
-//         scrub: true,
-//       },
-//     });
-
-//     const cardElements = document.querySelectorAll(".tech-card");
-
-//     cardElements.forEach((card) => {
-//       const el = card as HTMLElement;
-
-//       el.addEventListener("mousemove", (e: MouseEvent) => {
-//         const rect = el.getBoundingClientRect();
-
-//         const x = e.clientX - rect.left;
-//         const y = e.clientY - rect.top;
-
-//         const rotateX = -(y - rect.height / 2) / 20;
-//         const rotateY = (x - rect.width / 2) / 20;
-
-//         el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-//       });
-
-//       el.addEventListener("mouseleave", () => {
-//         el.style.transform = "rotateX(0) rotateY(0) scale(1)";
-//       });
-//     });
-
-//   }, []);
-
-//   // 🔥 YAHAN IMAGES + TEXT DEFINE KARO
-//   const cardsData = [
-//     {
-//       title: "Iot Lab",
-//       img: "/ai-innovation-images/imagelab.jpg",
-//     },
-//     {
-//       title: "Science Lab",
-//       img: "/ai-innovation-images/receiptionimg.jpg",
-//     },
-//     {
-//       title: "Science wall",
-//       img: "/ai-innovation-images/sciencewall.jpg",
-//     },
-//     {
-//       title: "AI and Machine Learning",
-//       img: "/ai-innovation-images/virtualimg.jpg",
-//     },
-//     {
-//       title: "Science Wall",
-//       img: "/ai-innovation-images/sciencewall.jpg",
-//     },
-//     {
-//       title: "Iot Lab",
-//       img: "/ai-innovation-images/imagelab.jpg",
-//     },
-//   ];
-
-//   return (
-//     <section ref={sectionRef} className="bg-[#eff6ff] py-16 px-4">
-//       <div className="max-w-6xl mx-auto text-center">
-//         <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a]">
-//           Technologies in Focus for Inclusive AI Education
-//         </h2>
-
-//         <p className="mt-4 text-[#475569] max-w-3xl mx-auto">
-//           Learn cutting-edge technologies through hands-on kits and real-world applications.
-//         </p>
-//       </div>
-
-//       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-//         {cardsData.map((card, index) => (
-//           <div
-//             key={index}
-//             className="tech-card bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 transform perspective-[1000px] hover:shadow-[0_20px_50px_rgba(37,99,235,0.25)]"
-//           >
-//             <img
-//               src={card.img}
-//               alt={card.title}
-//               className="w-full h-48 object-cover transition duration-500 hover:scale-110"
-//             />
-
-//             <div className="p-4 text-center font-semibold text-[#1e293b]">
-//               {card.title}
-//             </div>
-//           </div>
-//         ))}
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-// "use client";
-
-// import { useEffect, useRef } from "react";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import Image from "next/image";
-
-// export default function TechFocusSection() {
-//   const sectionRef = useRef<HTMLDivElement | null>(null);
-
-//   useEffect(() => {
-//     gsap.registerPlugin(ScrollTrigger);
-
-//     const cards = gsap.utils.toArray(".tech-card");
-
-//     gsap.from(cards, {
-//       y: 100,
-//       opacity: 0,
-//       duration: 1,
-//       stagger: 0.2,
-//       ease: "power3.out",
-//       scrollTrigger: {
-//         trigger: sectionRef.current,
-//         start: "top 85%",
-//       },
-//     });
-
-//     gsap.to(cards, {
-//       y: (i) => (i % 2 === 0 ? -30 : -60),
-//       scrollTrigger: {
-//         trigger: sectionRef.current,
-//         start: "top bottom",
-//         end: "bottom top",
-//         scrub: true,
-//       },
-//     });
-
-//     const cardElements = document.querySelectorAll(".tech-card");
-
-//     cardElements.forEach((card) => {
-//       const el = card as HTMLElement;
-
-//       const handleMove = (e: MouseEvent) => {
-//         const rect = el.getBoundingClientRect();
-//         const x = e.clientX - rect.left;
-//         const y = e.clientY - rect.top;
-
-//         const rotateX = -(y - rect.height / 2) / 20;
-//         const rotateY = (x - rect.width / 2) / 20;
-
-//         el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-//       };
-
-//       const handleLeave = () => {
-//         el.style.transform = "rotateX(0) rotateY(0) scale(1)";
-//       };
-
-//       el.addEventListener("mousemove", handleMove);
-//       el.addEventListener("mouseleave", handleLeave);
-
-//       // cleanup
-//       return () => {
-//         el.removeEventListener("mousemove", handleMove);
-//         el.removeEventListener("mouseleave", handleLeave);
-//       };
-//     });
-
-//   }, []);
-
-//   // ✅ CLEAN IMAGE PATHS (MAKE SURE FILE NAMES MATCH EXACTLY)
-//   const cardsData = [
-//     {
-//       title: "Iot Lab",
-//       img: "/ai-innovation-images/imagelab.jpg",
-//     },
-//     {
-//       title: "Science Lab",
-//       img: "/ai-innovation-images/receptionimg.jpg", // ⚠️ spelling check
-//     },
-//     {
-//       title: "Science Wall",
-//       img: "/ai-innovation-images/sciencewall.jpg",
-//     },
-//     {
-//       title: "AI and Machine Learning",
-//       img: "/ai-innovation-images/virtualimg.jpg",
-//     },
-//     {
-//       title: "STEM",
-//       img: "/ai-innovation-images/img5.jpg", // optional replace
-//     },
-//     {
-//       title: "Automation",
-//       img: "/ai-innovation-images/img6.jpg", // optional replace
-//     },
-//   ];
-
-//   return (
-//     <section ref={sectionRef} className="bg-[#eff6ff] py-16 px-4">
-//       <div className="max-w-6xl mx-auto text-center">
-//         <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a]">
-//           Technologies in Focus for Inclusive AI Education
-//         </h2>
-
-//         <p className="mt-4 text-[#475569] max-w-3xl mx-auto">
-//           Learn cutting-edge technologies through hands-on kits and real-world applications.
-//         </p>
-//       </div>
-
-//       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-//         {cardsData.map((card, index) => (
-//           <div
-//             key={index}
-//             className="tech-card bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 transform perspective-[1000px] hover:shadow-[0_20px_50px_rgba(37,99,235,0.25)]"
-//           >
-//             {/* ✅ Next Image FIX */}
-//             <div className="relative w-full h-48">
-//               <Image
-//                 src={card.img}
-//                 alt={card.title}
-//                 fill
-//                 unoptimized
-//                 className="object-cover transition duration-500 hover:scale-110"
-//               />
-//             </div>
-
-//             <div className="p-4 text-center font-semibold text-[#1e293b]">
-//               {card.title}
-//             </div>
-//           </div>
-//         ))}
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
-// "use client";
-
-// import { useEffect, useRef } from "react";
-
-// export default function TechFocusSection() {
-//   const sectionRef = useRef<HTMLDivElement | null>(null);
-
-//   // ❌ GSAP temporarily hata diya (pehle UI fix karte hain)
-
-//   const cardsData = [
-//     { title: "Iot Lab", img: "/ai-innovation-images/test.jpg" },
-//     { title: "Science Lab", img: "/ai-innovation-images/test.jpg" },
-//     { title: "Science Wall", img: "/ai-innovation-images/test.jpg" },
-//     { title: "AI ML", img: "/ai-innovation-images/test.jpg" },
-//     { title: "STEM", img: "/ai-innovation-images/test.jpg" },
-//     { title: "Automation", img: "/ai-innovation-images/test.jpg" },
-//   ];
-
-//   return (
-//     <section ref={sectionRef} className="bg-[#eff6ff] py-16 px-4">
-      
-//       <div className="max-w-6xl mx-auto text-center">
-//         <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a]">
-//           Technologies in Focus for Inclusive AI Education
-//         </h2>
-
-//         <p className="mt-4 text-[#475569] max-w-3xl mx-auto">
-//           Learn cutting-edge technologies through hands-on kits and real-world applications.
-//         </p>
-//       </div>
-
-//       {/* 🔥 CARDS GRID */}
-//       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-//         {cardsData.map((card, index) => {
-//           return (
-//             <div
-//               key={index}
-//               className="bg-white rounded-xl shadow p-2"
-//             >
-//               <img
-//                 src={card.img}
-//                 alt="img"
-//                 className="w-full h-48 object-cover"
-//               />
-
-//               <p className="text-center mt-2">{card.title}</p>
-//             </div>
-//           );
-//         })}
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import React, { useRef, useState } from "react";
+import { motion, useInView, Variants } from "framer-motion";
+import { Wifi, FlaskConical, LayoutGrid, Glasses, Bot, Cpu, ArrowRight } from "lucide-react";
 
-export default function TechFocusSection() {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-useEffect(() => {
-  const cards = document.querySelectorAll(".tech-card");
+// 6 Premium Cards Configuration
+const cardsData = [
+  {
+    title: "IoT Innovation Lab",
+    description: "Hands-on learning with smart sensors, embedded systems and real-time IoT applications.",
+    img: "/ai-innovation-images/imagelab.jpg",
+    icon: Wifi,
+    theme: "blue",
+  },
+  {
+    title: "Composite Science Lab",
+    description: "Explore scientific concepts through experiments, interactive demonstrations and practical activities.",
+    img: "/ai-innovation-images/receiptionimg.jpg",
+    icon: FlaskConical,
+    theme: "green",
+  },
+  {
+    title: "Interactive Science Wall",
+    description: "Visual STEM learning that encourages curiosity, creativity and experiential understanding.",
+    img: "/ai-innovation-images/sciencewall.jpg",
+    icon: LayoutGrid,
+    theme: "blue",
+  },
+  {
+    title: "VR / AR Experience Zone",
+    description: "Immersive virtual and augmented reality experiences for interactive and engaging learning.",
+    img: "/ai-innovation-images/virtualimg.jpg",
+    icon: Glasses,
+    theme: "green",
+  },
+  {
+    title: "Robotics Innovation Lab",
+    description: "Build, program and innovate using robotics kits and real-world automation projects.",
+    img: "/ai-innovation-images/test.jpg",
+    icon: Bot,
+    theme: "blue",
+  },
+  {
+    title: "AI & Mechatronics Lab",
+    description: "Explore Artificial Intelligence, automation and intelligent systems through hands-on projects.",
+    img: "/ai-innovation-images/test.jpg",
+    icon: Cpu,
+    theme: "green",
+  },
+];
 
-  // 🔥 SAFE scroll animation (no opacity bug)
-  cards.forEach((card, index) => {
-    gsap.fromTo(
-      card,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.1,
-        delay: index * 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 90%",
-        },
-      }
-    );
-    
+// Grid entrance animations
+const gridVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
 
-    
-  });
-  
-  
+// Card Framer Motion variants
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 90,
+      damping: 15,
+    },
+  },
+  hover: {
+    y: -10,
+    scale: 1.02,
+    boxShadow: "0 20px 25px -5px rgb(15 23 42 / 0.08), 0 8px 10px -6px rgb(15 23 42 / 0.08)",
+    transition: {
+      type: "spring" as const,
+      stiffness: 300,
+      damping: 20,
+    },
+  },
+};
 
-}, []);
+// Image zoom variant
+const imageVariants: Variants = {
+  initial: { scale: 1 },
+  hover: {
+    scale: 1.08,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
 
-  const cardsData = [
-    { title: "Iot Lab", img: "/ai-innovation-images/imagelab.jpg" },
-    { title: "Science Lab", img: "/ai-innovation-images/receiptionimg.jpg" },
-    { title: "Science Wall", img: "/ai-innovation-images/sciencewall.jpg" },
-    { title: "AI ML", img: "/ai-innovation-images/virtualimg.jpg" },
-    { title: "STEM", img: "/ai-innovation-images/test.jpg" },
-    { title: "Automation", img: "/ai-innovation-images/test.jpg" },
-  ];
+// Floating Icon hover rotation variant
+const iconVariants: Variants = {
+  initial: { rotate: 0 },
+  hover: {
+    rotate: 8,
+    transition: { type: "spring" as const, stiffness: 200, damping: 10 },
+  },
+};
+
+// Arrow slide variant
+const arrowVariants: Variants = {
+  initial: { x: 0 },
+  hover: {
+    x: 4,
+    transition: { type: "spring" as const, stiffness: 300, damping: 15 },
+  },
+};
+
+interface TechCardProps {
+  card: typeof cardsData[0];
+  index: number;
+}
+
+// Sub-component for individual card interaction (handles 3D tilt isolate from Framer Motion parent hover scale/translate)
+function TechCard({ card, index }: TechCardProps) {
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Subtle 3D tilt rotation calculation (max 6 degrees)
+    const rotateX = -((y - rect.height / 2) / (rect.height / 2)) * 6;
+    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 6;
+
+    setRotate({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+  };
+
+  const IconComponent = card.icon;
+
+  const themeStyles =
+    card.theme === "blue"
+      ? {
+          iconBg: "bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-500/20",
+          arrowColor: "text-blue-600 border-blue-100 bg-blue-50/50 hover:bg-blue-600 hover:text-white",
+          textHover: "group-hover/card:text-blue-600",
+        }
+      : {
+          iconBg: "bg-gradient-to-br from-green-500 to-green-600 shadow-green-500/20",
+          arrowColor: "text-green-600 border-green-100 bg-green-50/50 hover:bg-green-600 hover:text-white",
+          textHover: "group-hover/card:text-green-600",
+        };
 
   return (
-    <section ref={sectionRef} className="bg-gradient-to-br from-[#eff6ff] via-[#dbeafe] to-[#bfdbfe] py-16 px-4">
+    <motion.div
+      variants={cardVariants}
+      whileHover="hover"
+      className="w-full flex"
+    >
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+          transition: rotate.x === 0 && rotate.y === 0 ? "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)" : "none",
+          transformStyle: "preserve-3d",
+        }}
+        className="group/card relative w-full bg-white rounded-[30px] shadow-sm border border-slate-100/80 overflow-hidden flex flex-col justify-between select-none"
+      >
+        {/* 1. Zooming Cover Image */}
+        <div className="relative w-full h-[210px] overflow-hidden bg-slate-50">
+          <motion.img
+            variants={imageVariants}
+            src={card.img}
+            alt={card.title}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
+        {/* 2. Overlapping Card Content Info Panel */}
+        <div className="relative z-10 bg-white/95 backdrop-blur-md px-6 pt-9 pb-6 rounded-t-[30px] -mt-8 border-t border-slate-100 flex flex-col justify-between flex-1">
+          
+          {/* Floating circular technology icon */}
+          <div className="absolute -top-7 left-6 z-20">
+            <motion.div
+              animate={{ y: [0, -3.5, 0] }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+                delay: index * 0.15,
+              }}
+            >
+              <motion.div
+                variants={iconVariants}
+                className={`w-13 h-13 rounded-2xl flex items-center justify-center text-white shadow-lg ${themeStyles.iconBg}`}
+              >
+                <IconComponent className="w-6 h-6" />
+              </motion.div>
+            </motion.div>
+          </div>
 
-        
-
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a]">
-          Technologies in Focus for Inclusive AI Innovation
-        </h2>
-
-        <p className="mt-4 text-[#334155] max-w-3xl mx-auto">
-          Learn cutting-edge technologies through hands-on kits.
-        </p>
-      </div>
-
-      {/* ✅ FORCE VISIBLE */}
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-        {cardsData.map((card, index) => (
-          <div
-            key={index}
-            className="tech-card bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl"
-          >
-            <img
-              src={card.img}
-              alt={card.title}
-              className="w-full h-48 object-cover transition duration-500 hover:scale-110"
-            />
-
-            <div className="p-4 text-center font-semibold text-[#1e293b]">
-              {card.title}
+          {/* Heading, Description, and Arrow Panel */}
+          <div className="flex items-start justify-between gap-4 mt-1.5">
+            <div className="flex-1">
+              <h3 className={`text-base md:text-[17px] font-bold text-[#0F172A] leading-snug transition-colors duration-300 ${themeStyles.textHover}`}>
+                {card.title}
+              </h3>
+              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                {card.description}
+              </p>
+            </div>
+            
+            <div className="flex-shrink-0 self-center">
+              {/* Sliding Arrow Button */}
+              <motion.div
+                variants={arrowVariants}
+                className={`w-9 h-9 rounded-full border flex items-center justify-center transition-all ${themeStyles.arrowColor}`}
+              >
+                <ArrowRight className="w-4 h-4" />
+              </motion.div>
             </div>
           </div>
-        ))}
+
+        </div>
 
       </div>
+    </motion.div>
+  );
+}
 
+export default function TechFocusSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 });
+
+  return (
+    <section className="py-24 bg-white relative overflow-hidden flex flex-col justify-center">
+      
+      {/* Background visual graphics */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none -z-10">
+        
+        {/* Soft radial blue glow */}
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(37,99,235,0.04)_0%,transparent_70%)]" />
+
+        {/* Dotted pattern overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-25" />
+
+        {/* Floating blurred circles */}
+        <motion.div
+          className="absolute top-[12%] left-[8%] w-36 h-36 rounded-full bg-blue-100/10 filter blur-2xl"
+          animate={{ y: [0, 24, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-[12%] right-[8%] w-44 h-44 rounded-full bg-blue-100/10 filter blur-2xl"
+          animate={{ y: [0, -24, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+
+        {/* SVG curved graphics */}
+        <svg className="absolute top-28 left-[-3%] w-[30%] h-auto opacity-[0.08] text-blue-500" viewBox="0 0 400 400" fill="none">
+          <path d="M -60,200 C 90,100 140,300 340,200" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" strokeLinecap="round" />
+        </svg>
+        <svg className="absolute bottom-28 right-[-3%] w-[30%] h-auto opacity-[0.08] text-blue-500" viewBox="0 0 400 400" fill="none">
+          <path d="M 60,200 C 260,100 260,300 460,200" stroke="currentColor" strokeWidth="2.5" strokeDasharray="6 6" strokeLinecap="round" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#EFF6FF] text-[#2563EB] text-xs font-bold tracking-widest uppercase mb-4 shadow-sm border border-blue-100/30"
+          >
+            Our Labs & Facilities
+          </motion.span>
+
+          <motion.h2
+            initial={{ opacity: 0, filter: "blur(6px)" }}
+            animate={isInView ? { opacity: 1, filter: "blur(0px)" } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight mb-4"
+          >
+            Technologies in Focus for <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Inclusive AI Innovation</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm md:text-base text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal"
+          >
+            Learn cutting-edge technologies through hands-on kits designed to develop innovation, creativity and future-ready skills.
+          </motion.p>
+        </div>
+
+        {/* Feature Cards Grid (Desktop: 3 cols, Tablet: 2 cols, Mobile: 1 col) */}
+        <motion.div
+          ref={containerRef}
+          variants={gridVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+        >
+          {cardsData.map((card, index) => (
+            <TechCard key={index} card={card} index={index} />
+          ))}
+        </motion.div>
+
+      </div>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const footerMotion = {
@@ -25,9 +26,25 @@ export default function Footer() {
         {...footerMotion}
         className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-3"
       >
-        <div>
-          <h3 className="text-lg font-semibold">Siddesh Technologies Private Limited</h3>
-          <p className="mt-3 text-sm text-white/70">
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-4">
+            <div className="bg-white rounded-2xl p-2 flex items-center justify-center shadow-lg border border-slate-700/20">
+              <Image
+                src="/siddesh logo.png"
+                alt="Siddesh Logo"
+                width={150}
+                height={80}
+                className="object-contain"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h3 className="text-xl font-bold tracking-tight text-white">
+                Siddesh
+              </h3>
+              <span className="text-xs text-white/60 font-semibold">Technologies Pvt. Ltd.</span>
+            </div>
+          </div>
+          <p className="text-sm text-white/70 leading-relaxed max-w-sm mt-1">
             Building future-ready learners through immersive technology education and
             innovation labs.
           </p>
@@ -35,9 +52,9 @@ export default function Footer() {
 
         <div>
           <h4 className="text-base font-semibold">Quick Links</h4>
-          <div className="mt-3 flex flex-col gap-2 text-sm text-white/70">
+          <div className="mt-4 flex flex-col gap-2.5 text-sm text-white/70">
             {quickLinks.map((link) => (
-              <Link key={link.label} href={link.href} className="hover:text-white">
+              <Link key={link.label} href={link.href} className="hover:text-white transition-colors">
                 {link.label}
               </Link>
             ))}
@@ -46,7 +63,7 @@ export default function Footer() {
 
         <div>
           <h4 className="text-base font-semibold">Contact</h4>
-          <p className="mt-3 text-sm text-white/70">
+          <p className="mt-4 text-sm text-white/70 leading-relaxed">
             Siddesh Technologies Pvt. Ltd.
             <br />
             Innovation Park, Bengaluru, Karnataka

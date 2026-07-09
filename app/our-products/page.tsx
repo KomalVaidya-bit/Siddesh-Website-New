@@ -1,1183 +1,554 @@
-
-// "use client";
-// import Navbar from "../../components/Navbar";
-// import { motion } from "framer-motion";
-
-// import ProductCarousel from "@/components/ProductCarousel";
-
-
-// // import { motion } from "framer-motion";
-
-// const products = [
-//   {
-//     title: "IoT Training Kit",
-//     images: [
-//       "/kit-frames/kit4.png",
-//       "/kit-frames/kit5.png",
-//       "/kit-frames/kit6.png",
-//     ],
-//     desc: "Built for real-world IoT innovation.",
-//     features: ["Sensors", "Live Projects", "Industry Use"],
-//   },
-//   {
-//     title: "AI Exploration Kit",
-//     images: [
-//       "/products/ai1.png",
-//       "/products/ai2.png",
-//     ],
-//     desc: "Hands-on AI learning kit.",
-//     features: ["AI Models", "Experiments"],
-//   },
-//   {
-//     title: "Science Wall",
-//     img: "/products/science.png",
-//     desc: "Interactive science concepts explained visually.",
-//     features: ["3D Models", "Interactive Panels", "School Friendly"],
-//   },
-//   {
-//     title: "Virtual Reality Lab",
-//     img: "/products/vr.png",
-//     desc: "Immersive VR-based learning for next-gen education.",
-//     features: ["VR Headsets", "Simulations", "Interactive Learning"],
-//   },
-// ];
-
-// export default function ProductsPage() {
-//   return (
-//     <div className="bg-[#f8fafc]">
-
-//       {/* HERO */}
-//       <section className="py-24 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <motion.h1
-//           initial={{ opacity: 0, y: 40 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           className="text-4xl md:text-5xl font-bold"
-//         >
-//           Our Products
-//         </motion.h1>
-//         <p className="mt-4 max-w-2xl mx-auto opacity-90">
-//           Innovative learning solutions designed to empower students with real-world skills.
-//         </p>
-//       </section>
-
-//       {/* FEATURED GRID */}
-//       <section className="py-20 max-w-7xl mx-auto px-6">
-//         <h2 className="text-3xl font-bold text-blue-600 text-center mb-12">
-//           Featured Products
-//         </h2>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {products.map((item, i) => (
-//             <motion.div
-//               key={i}
-//               whileHover={{ y: -10 }}
-//               className="bg-white rounded-xl shadow-md overflow-hidden border"
-//             >
-// <ProductCarousel images={item.images} />
-//               <div className="p-5">
-//                 <h3 className="font-semibold text-lg">{item.title}</h3>
-//                 <p className="text-gray-500 text-sm mt-2">{item.desc}</p>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* DETAILED SECTIONS */}
-//       <section className="py-20 max-w-7xl mx-auto px-6 space-y-24">
-
-//         {products.map((item, i) => (
-//           <div
-//             key={i}
-//             className={`grid md:grid-cols-2 gap-10 items-center ${
-//               i % 2 !== 0 ? "md:flex-row-reverse" : ""
-//             }`}
-//           >
-//             {/* IMAGE */}
-//             <motion.img
-//               src={item.img}
-//               className="rounded-xl shadow-lg"
-//               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-//               whileInView={{ opacity: 1, x: 0 }}
-//             />
-
-//             {/* TEXT */}
-//             <motion.div
-//               initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50 }}
-//               whileInView={{ opacity: 1, x: 0 }}
-//             >
-//               <h3 className="text-2xl font-bold text-blue-600">
-//                 {item.title}
-//               </h3>
-
-//               <div className="h-[3px] w-16 bg-yellow-400 my-3"></div>
-
-//               <p className="text-gray-600 mb-4">{item.desc}</p>
-
-//               <ul className="list-disc pl-5 text-gray-600 space-y-1">
-//                 {item.features.map((f, idx) => (
-//                   <li key={idx}>{f}</li>
-//                 ))}
-//               </ul>
-
-//               <button className="mt-5 bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700">
-//                 Learn More
-//               </button>
-//             </motion.div>
-//           </div>
-//         ))}
-//       </section>
-
-//       {/* INNOVATION SECTION */}
-//       <section className="py-20 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-center">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Customized Solutions — “You Think, We Make”
-//         </h2>
-//         <p className="max-w-2xl mx-auto opacity-90">
-//           We build custom AI & Robotics labs tailored for your institution.
-//         </p>
-//       </section>
-
-//       {/* WHY US */}
-//       <section className="py-20 bg-[#eef2ff]">
-//         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
-
-//           {[
-//             "Hands-on Learning",
-//             "Industry Ready Curriculum",
-//             "Future Skill Development",
-//           ].map((item, i) => (
-//             <motion.div
-//               key={i}
-//               whileHover={{ scale: 1.05 }}
-//               className="bg-white p-6 rounded-xl shadow"
-//             >
-//               {item}
-//             </motion.div>
-//           ))}
-
-//         </div>
-//       </section>
-
-//       {/* CTA */}
-//       <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Transform Your School with AI & Robotics
-//         </h2>
-//         <button className="bg-white text-blue-600 px-6 py-3 rounded-full shadow">
-//           Contact Us
-//         </button>
-//       </section>
-
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-// "use client";
-
-// import Navbar from "../../components/Navbar";
-// import { motion } from "framer-motion";
-// import ProductCarousel from "@/components/ProductCarousel";
-
-// const products = [
-//   {
-//     title: "IoT Training Kit",
-//     images: [
-//       "/kit-frames/kit4.png",
-//       "/kit-frames/kit5.png",
-//       "/kit-frames/kit6.png",
-//     ],
-//     desc: "Built for real-world IoT innovation.",
-//     features: ["Sensors", "Live Projects", "Industry Use"],
-//   },
-//   {
-//     title: "AI Exploration Kit",
-//     images: [
-//       "/products/ai1.png",
-//       "/products/ai2.png",
-//     ],
-//     desc: "Hands-on AI learning kit.",
-//     features: ["AI Models", "Experiments"],
-//   },
-//   {
-//     title: "Science Wall",
-//     images: [
-//       "/products/science.png",
-//     ],
-//     desc: "Interactive science concepts explained visually.",
-//     features: ["3D Models", "Interactive Panels", "School Friendly"],
-//   },
-//   {
-//     title: "Virtual Reality Lab",
-//     images: [
-//       "/products/vr.png",
-//     ],
-//     desc: "Immersive VR-based learning for next-gen education.",
-//     features: ["VR Headsets", "Simulations", "Interactive Learning"],
-//   },
-// ];
-
-// export default function ProductsPage() {
-//   return (
-//     <div className="bg-[#f8fafc]">
-
-//       {/* HERO */}
-//       <section className="py-24 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <motion.h1
-//           initial={{ opacity: 0, y: 40 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           className="text-4xl md:text-5xl font-bold"
-//         >
-//           Our Products
-//         </motion.h1>
-//         <p className="mt-4 max-w-2xl mx-auto opacity-90">
-//           Innovative learning solutions designed to empower students with real-world skills.
-//         </p>
-//       </section>
-
-//       {/* FEATURED GRID */}
-//       <section className="py-20 max-w-7xl mx-auto px-6">
-//         <h2 className="text-3xl font-bold text-blue-600 text-center mb-12">
-//           Featured Products
-//         </h2>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {products.map((item, i) => (
-//             <motion.div
-//               key={i}
-//               whileHover={{ y: -10 }}
-//               className="bg-white rounded-xl shadow-md overflow-hidden border"
-//             >
-//               <ProductCarousel images={item.images} />
-
-//               <div className="p-5">
-//                 <h3 className="font-semibold text-lg">{item.title}</h3>
-//                 <p className="text-gray-500 text-sm mt-2">{item.desc}</p>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* DETAILED SECTIONS */}
-//       <section className="py-20 max-w-7xl mx-auto px-6 space-y-24">
-
-//         {products.map((item, i) => (
-//           <div
-//             key={i}
-//             className="grid md:grid-cols-2 gap-10 items-center"
-//           >
-//             {/* IMAGE */}
-//             <motion.img
-//               src={item.images?.[0] || "/placeholder.png"}
-//               className="rounded-xl shadow-lg"
-//               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-//               whileInView={{ opacity: 1, x: 0 }}
-//             />
-
-//             {/* TEXT */}
-//             <motion.div
-//               initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50 }}
-//               whileInView={{ opacity: 1, x: 0 }}
-//             >
-//               <h3 className="text-2xl font-bold text-blue-600">
-//                 {item.title}
-//               </h3>
-
-//               <div className="h-[3px] w-16 bg-yellow-400 my-3"></div>
-
-//               <p className="text-gray-600 mb-4">{item.desc}</p>
-
-//               <ul className="list-disc pl-5 text-gray-600 space-y-1">
-//                 {item.features.map((f, idx) => (
-//                   <li key={idx}>{f}</li>
-//                 ))}
-//               </ul>
-
-//               <button className="mt-5 bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700">
-//                 Learn More
-//               </button>
-//             </motion.div>
-//           </div>
-//         ))}
-
-//       </section>
-
-//       {/* INNOVATION SECTION */}
-//       <section className="py-20 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-center">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Customized Solutions — “You Think, We Make”
-//         </h2>
-//         <p className="max-w-2xl mx-auto opacity-90">
-//           We build custom AI & Robotics labs tailored for your institution.
-//         </p>
-//       </section>
-
-//       {/* WHY US */}
-//       <section className="py-20 bg-[#eef2ff]">
-//         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
-
-//           {[
-//             "Hands-on Learning",
-//             "Industry Ready Curriculum",
-//             "Future Skill Development",
-//           ].map((item, i) => (
-//             <motion.div
-//               key={i}
-//               whileHover={{ scale: 1.05 }}
-//               className="bg-white p-6 rounded-xl shadow"
-//             >
-//               {item}
-//             </motion.div>
-//           ))}
-
-//         </div>
-//       </section>
-
-//       {/* CTA */}
-//       <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Transform Your School with AI & Robotics
-//         </h2>
-//         <button className="bg-white text-blue-600 px-6 py-3 rounded-full shadow">
-//           Contact Us
-//         </button>
-//       </section>
-
-//     </div>
-//   );
-// }
-
-
-
-// "use client";
-
-// import ProductCarousel from "@/components/ProductCarousel";
-
-// const products = [
-//   {
-//     title: "IoT Training Kit",
-//     images: [
-//       "/kit-frames/kit4.png",
-//       "/kit-frames/kit5.png",
-//       "/kit-frames/kit6.png",
-//     ],
-//     desc: "Built for real-world IoT innovation.",
-//     features: ["Sensors", "Live Projects", "Industry Use"],
-//   },
-//   {
-//     title: "AI Exploration Kit",
-//     images: [
-//       "/kit-frames/kit2.png",
-//       "/kit-frames/kit3.png",
-//     ],
-//     desc: "Hands-on AI learning kit.",
-//     features: ["AI Models", "Experiments"],
-//   },
-//   {
-//     title: "Science Wall",
-//     images: ["/kit-frames/kit8.png",
-//             "/kit-frames/kit1.png",
-//     ],
-//     desc: "Interactive science concepts explained visually.",
-//     features: ["3D Models", "Interactive Panels", "School Friendly"],
-//   },
-//   {
-//     title: "Virtual Reality Lab",
-//     images: ["/kit-frames/kit7.png"],
-//     desc: "Immersive VR-based learning for next-gen education.",
-//     features: ["VR Headsets", "Simulations", "Interactive Learning"],
-//   },
-// ];
-
-// export default function ProductsPage() {
-//   return (
-//     <div className="bg-[#f8fafc]">
-
-//       {/* HERO */}
-//       <section className="py-24 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h1 className="text-4xl md:text-5xl font-bold">
-//           Our Products
-//         </h1>
-//         <p className="mt-4 max-w-2xl mx-auto opacity-90">
-//           Innovative learning solutions designed to empower students with real-world skills.
-//         </p>
-//       </section>
-
-//       {/* FEATURED GRID (STATIC) */}
-//       <section className="py-20 max-w-7xl mx-auto px-6">
-//         <h2 className="text-3xl font-bold text-blue-600 text-center mb-12">
-//           Featured Products
-//         </h2>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {products.map((item, i) => (
-//             <div
-//               key={i}
-//               className="bg-white rounded-xl shadow-md overflow-hidden border"
-//             >
-//               <img
-//                 src={item.images[0]}
-//                 className="w-full h-48 object-cover"
-//                 alt={item.title}
-//               />
-
-//               <div className="p-5">
-//                 <h3 className="font-semibold text-lg">{item.title}</h3>
-//                 <p className="text-gray-500 text-sm mt-2">{item.desc}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* 🔥 DETAILED SECTION (3D + CAROUSEL + ALTERNATING) */}
-//      <section className="py-24 max-w-7xl mx-auto px-6 space-y-20">
-
-//   {products.map((item, i) => {
-//     const isReverse = i % 2 !== 0;
-
-//     return (
-//       <div
-//   key={i}
-//   className="max-w-5xl mx-auto rounded-2xl bg-white/60 backdrop-blur-xl shadow-[0_12px_30px_rgba(0,0,0,0.12)] p-4 md:p-6"
-// >
-//   <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
-
-//     {/* IMAGE */}
-//     <div className={`${isReverse ? "md:order-2" : ""}`}>
-//       <div className="max-w-[420px] mx-auto rounded-xl overflow-hidden">
-//         <ProductCarousel images={item.images} />
-//       </div>
-//     </div>
-
-//     {/* TEXT */}
-//     <div className={`${isReverse ? "md:order-1" : ""}`}>
-//       <div className="max-w-md space-y-4">
-
-//         <h3 className="text-2xl md:text-3xl font-bold text-[#0ea5e9]">
-//           {item.title}
-//         </h3>
-
-//         <div className="h-[3px] w-14 bg-yellow-400"></div>
-
-//         <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-//           {item.desc}
-//         </p>
-
-//         <ul className="space-y-1 text-sm md:text-base">
-//           {item.features.map((f, idx) => (
-//             <li key={idx} className="flex items-center gap-2">
-//               <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-//               {f}
-//             </li>
-//           ))}
-//         </ul>
-
-//         <button className="mt-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-full shadow hover:scale-105 transition">
-//           Learn More
-//         </button>
-
-//       </div>
-//     </div>
-
-//   </div>
-// </div>
-//     );
-//   })}
-
-// </section>
-
-//       {/* CTA */}
-//       <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Transform Your School with AI & Robotics
-//         </h2>
-//         <button className="bg-white text-blue-600 px-6 py-3 rounded-full shadow">
-//           Contact Us
-//         </button>
-//       </section>
-
-//     </div>
-//   );
-// }
-
-
-
-
-// "use client";
-
-// import ProductCarousel from "@/components//our-product/ProductCarousel";
-
-// const products = [
-//   {
-//     title: "IoT Training Kit",
-//     price: "Starts INR 4999/-",
-//     desc: "Dive into the world of IoT with our comprehensive fundamentals kit.",
-//     features: [
-//       "Sensors: Temperature, humidity, motion",
-//       "Actuators: LED, motors",
-//       "Arduino & Raspberry Pi",
-//       "Wi-Fi, Bluetooth",
-//     ],
-//     images: ["/kit-frames/kit4.png", "/kit-frames/kit6.png"],
-//   },
-//   {
-//     title: "AI Exploration Kit",
-//     price: "Starts INR 7499/-",
-//     desc: "Explore artificial intelligence with immersive learning tools.",
-//     features: [
-//       "IoT Kit",
-//       "VR Box",
-//       "Motion Detection",
-//       "AR Demo",
-//     ],
-//     images: ["/products/ai1.png", "/products/ai2.png"],
-//   },
-//   {
-//     title: "Science Wall",
-//     price: "",
-//     desc: "Interactive science learning wall.",
-//     features: [
-//       "14 models",
-//       "Custom branding",
-//       "School-ready setup",
-//     ],
-//     images: ["/products/science1.png", "/products/science2.png"],
-//   },
-//   {
-//     title: "Virtual Reality Lab",
-//     price: "Starts INR 1999/-",
-//     desc: "Immersive VR learning experience.",
-//     features: [
-//       "Interactive simulations",
-//       "Better understanding",
-//       "Engaging content",
-//     ],
-//     images: ["/products/vr1.png", "/products/vr2.png"],
-//   },
-// ];
-
-// export default function OurProductsPage() {
-//   return (
-//     <div className="bg-[#f8fafc]">
-
-//       {/* 🔥 HERO */}
-//       <section className="py-20 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h1 className="text-4xl md:text-5xl font-bold">
-//           Our Products
-//         </h1>
-//         <p className="mt-4 opacity-90">
-//           Explore our innovative learning solutions
-//         </p>
-//       </section>
-
-//       {/* 🔥 FEATURED */}
-//       <section className="py-16 max-w-7xl mx-auto px-6">
-//         <h2 className="text-3xl font-bold text-blue-600 text-center mb-10">
-//           Featured Products
-//         </h2>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-//           {products.map((item, i) => (
-//             <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-//               <img src={item.images[0]} className="w-full h-48 object-cover" />
-//               <div className="p-4">
-//                 <h3 className="font-semibold">{item.title}</h3>
-//                 <p className="text-sm text-gray-500">{item.desc}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* 🔥 DETAILED */}
-//       <section className="py-16 max-w-6xl mx-auto px-6 space-y-20">
-//         {products.map((item, i) => {
-//           const reverse = i % 2 !== 0;
-
-//           return (
-//             <div key={i} className="bg-white/70 backdrop-blur-lg rounded-2xl shadow-lg p-6">
-//               <div className="grid md:grid-cols-2 gap-8 items-center">
-
-//                 {/* IMAGE */}
-//                 <div className={reverse ? "md:order-2" : ""}>
-//                   <ProductCarousel images={item.images} />
-//                 </div>
-
-//                 {/* TEXT */}
-//                 <div className={reverse ? "md:order-1" : ""}>
-//                   <h3 className="text-2xl font-bold text-blue-600">{item.title}</h3>
-
-//                   {item.price && <p className="font-semibold mt-1">{item.price}</p>}
-
-//                   <div className="h-[3px] w-14 bg-yellow-400 my-3"></div>
-
-//                   <p className="text-gray-600 text-sm mb-3">{item.desc}</p>
-
-//                   <ul className="text-sm text-gray-600 space-y-1">
-//                     {item.features.map((f, idx) => (
-//                       <li key={idx}>• {f}</li>
-//                     ))}
-//                   </ul>
-
-//                   <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-full">
-//                     Learn More
-//                   </button>
-//                 </div>
-
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </section>
-
-//       {/* 🔥 CUSTOM CARD (OVERLAY) */}
-//       <section className="py-16 max-w-6xl mx-auto px-6">
-//         <div className="relative rounded-2xl overflow-hidden shadow-xl">
-//           <img src="/products/ai-card.png" className="w-full h-[350px] object-cover" />
-
-//           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center p-8">
-//             <div className="text-white space-y-3 max-w-md">
-//               <h2 className="text-3xl font-bold">WE HAVE THE SOLUTION YOU NEED</h2>
-//               <p className="text-lg font-semibold">YOU THINK, WE MAKE</p>
-//               <button className="bg-blue-600 px-5 py-2 rounded-md">Explore</button>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* 🔥 CUSTOMIZED SOLUTION */}
-//       <section className="py-16 max-w-6xl mx-auto px-6">
-//         <div className="grid md:grid-cols-2 gap-10 items-center">
-
-//           <img src="/products/custom-banner.png" className="rounded-xl shadow-lg" />
-
-//           <div>
-//             <h2 className="text-3xl font-bold">
-//               Customized Solutions: “You Think, We Make”
-//             </h2>
-
-//             <p className="mt-2 font-medium">Consultation Starting INR 3999/-</p>
-
-//             <p className="mt-3 text-gray-600">
-//               We turn your ideas into real solutions tailored to your needs.
-//             </p>
-
-//             <ul className="mt-3 space-y-1 text-gray-600">
-//               <li>• Your Vision, Our Expertise</li>
-//               <li>• Tailored Solutions</li>
-//               <li>• Bring Ideas to Life</li>
-//             </ul>
-
-//             <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-md">
-//               Shop Now
-//             </button>
-//           </div>
-
-//         </div>
-//       </section>
-
-//       {/* 🔥 ARIVU SETU */}
-//       <section className="py-16 max-w-6xl mx-auto px-6">
-//         <div className="grid md:grid-cols-2 gap-10 items-center">
-
-//           <img src="/products/arivu.png" className="rounded-xl shadow-md" />
-
-//           <div>
-//             <h2 className="text-3xl font-bold">
-//               Arivu-Setu Bridging Technology & Education
-//             </h2>
-
-//             <p className="mt-2 font-medium">
-//               Booking Starting at INR 30/- per km
-//             </p>
-
-//             <p className="mt-3 text-gray-600">
-//               A mobile technology lab bringing innovation directly to students.
-//             </p>
-
-//             <ul className="mt-3 space-y-1 text-gray-600">
-//               <li>• Innovation On Wheels</li>
-//               <li>• Empowering Students</li>
-//               <li>• Book for Schools & Colleges</li>
-//             </ul>
-
-//             <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-md">
-//               Book Now
-//             </button>
-//           </div>
-
-//         </div>
-//       </section>
-
-//       {/* 🔥 CTA */}
-//       <section className="py-16 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Transform Your School with AI & Robotics
-//         </h2>
-//         <button className="bg-white text-blue-600 px-6 py-3 rounded-full shadow">
-//           Contact Us
-//         </button>
-//       </section>
-
-//     </div>
-//   );
-// }
-
-
-// working code without parralx
-
-// "use client";
-
-// import ProductCarousel from "@/components/our-product/ProductCarousel";
-
-// const products = [
-//   {
-//     title: "IoT Training Kit",
-//     price: "Starts INR 4999/-",
-//     desc: "Dive into the world of IoT with our comprehensive fundamentals kit.",
-//     features: [
-//       "Sensors: Temperature, humidity, motion",
-//       "Actuators: LED, motors",
-//       "Arduino & Raspberry Pi",
-//       "Wi-Fi, Bluetooth",
-//     ],
-//     images: ["/kit-frames/kit4.png", "/kit-frames/kit6.png"],
-//   },
-//   {
-//     title: "AI Exploration Kit",
-//     price: "Starts INR 7499/-",
-//     desc: "Explore artificial intelligence with immersive learning tools.",
-//     features: [
-//       "IoT Kit",
-//       "VR Box",
-//       "Motion Detection",
-//       "AR Demo",
-//     ],
-//     images: ["/products/ai1.png", "/products/ai2.png"],
-//   },
-//   {
-//     title: "Science Wall",
-//     price: "",
-//     desc: "Interactive science learning wall.",
-//     features: [
-//       "14 models",
-//       "Custom branding",
-//       "School-ready setup",
-//     ],
-//     images: ["/products/science1.png", "/products/science2.png"],
-//   },
-//   {
-//     title: "Virtual Reality Lab",
-//     price: "Starts INR 1999/-",
-//     desc: "Immersive VR learning experience.",
-//     features: [
-//       "Interactive simulations",
-//       "Better understanding",
-//       "Engaging content",
-//     ],
-//     images: ["/products/vr1.png", "/products/vr2.png"],
-//   },
-// ];
-
-// export default function OurProductsPage() {
-//   return (
-//     <div className="bg-[#f8fafc]">
-
-//       {/* HERO */}
-//       <section className="py-20 text-center bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#2563eb] text-white">
-//         <h1 className="text-4xl md:text-5xl font-bold">
-//           Our Products
-//         </h1>
-//         <p className="mt-4 opacity-90">
-//           Explore our innovative learning solutions
-//         </p>
-//       </section>
-
-//       {/* FEATURED */}
-//       <section className="py-16 max-w-7xl mx-auto px-6">
-//         <h2 className="text-3xl font-bold text-blue-600 text-center mb-10">
-//           Featured Products
-//         </h2>
-
-//         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-//           {products.map((item, i) => (
-//             <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-//               <img src={item.images[0]} className="w-full h-48 object-cover" />
-//               <div className="p-4">
-//                 <h3 className="font-semibold">{item.title}</h3>
-//                 <p className="text-sm text-gray-500">{item.desc}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* DETAILED */}
-//       <section className="py-16 max-w-6xl mx-auto px-6 space-y-20">
-//         {products.map((item, i) => {
-//           const reverse = i % 2 !== 0;
-
-//           return (
-//             <div className="relative rounded-2xl overflow-hidden shadow-xl">
-
-//               {/* OVERLAY */}
-//               <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 to-[#1e293b]/80"></div>
-
-//               {/* CONTENT */}
-//               <div className="relative z-10 p-6">
-
-//                 <div className="grid md:grid-cols-2 gap-8 items-center">
-
-//                   {/* IMAGE */}
-//                   <div className={reverse ? "md:order-2" : ""}>
-//                     <ProductCarousel images={item.images} />
-//                   </div>
-
-//                   {/* TEXT */}
-//                   <div className={`${reverse ? "md:order-1" : ""} text-white`}>
-                    
-//                     <h3 className="text-2xl font-bold">
-//                       {item.title}
-//                     </h3>
-
-//                     {item.price && (
-//                       <p className="text-gray-300 mt-1">{item.price}</p>
-//                     )}
-
-//                     <div className="h-[3px] w-14 bg-yellow-400 my-3"></div>
-
-//                     <p className="text-gray-300 text-sm mb-3">
-//                       {item.desc}
-//                     </p>
-
-//                     <ul className="text-sm text-gray-300 space-y-1">
-//                       {item.features.map((f, idx) => (
-//                         <li key={idx}>• {f}</li>
-//                       ))}
-//                     </ul>
-
-//                     <button className="mt-4 bg-blue-600 px-5 py-2 rounded-full">
-//                       Learn More
-//                     </button>
-
-//                   </div>
-
-//                 </div>
-
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </section>
-
-//       {/* CUSTOM CARD */}
-//       <section className="py-16 max-w-6xl mx-auto px-6">
-//         <div className="relative rounded-2xl overflow-hidden shadow-xl">
-//           <img src="/products/ai-card.png" className="w-full h-[350px] object-cover" />
-
-//           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center p-8">
-//             <div className="text-white space-y-3 max-w-md">
-//               <h2 className="text-3xl font-bold">WE HAVE THE SOLUTION YOU NEED</h2>
-//               <p className="text-lg font-semibold">YOU THINK, WE MAKE</p>
-//               <button className="bg-blue-600 px-5 py-2 rounded-md">Explore</button>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* CUSTOMIZED SOLUTION */}
-//       <section className="py-16 max-w-6xl mx-auto px-6">
-//         <div className="grid md:grid-cols-2 gap-10 items-center">
-
-//           <img src="/products/custom-banner.png" className="rounded-xl shadow-lg" />
-
-//           <div>
-//             <h2 className="text-3xl font-bold">
-//               Customized Solutions: “You Think, We Make”
-//             </h2>
-
-//             <p className="mt-2 font-medium">Consultation Starting INR 3999/-</p>
-
-//             <p className="mt-3 text-gray-600">
-//               We turn your ideas into real solutions tailored to your needs.
-//             </p>
-
-//             <ul className="mt-3 space-y-1 text-gray-600">
-//               <li>• Your Vision, Our Expertise</li>
-//               <li>• Tailored Solutions</li>
-//               <li>• Bring Ideas to Life</li>
-//             </ul>
-
-//             <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-md">
-//               Shop Now
-//             </button>
-//           </div>
-
-//         </div>
-//       </section>
-
-//       {/* ARIVU SETU */}
-//       <section className="py-16 max-w-6xl mx-auto px-6">
-//         <div className="grid md:grid-cols-2 gap-10 items-center">
-
-//           <img src="/products/arivu.png" className="rounded-xl shadow-md" />
-
-//           <div>
-//             <h2 className="text-3xl font-bold">
-//               Arivu-Setu Bridging Technology & Education
-//             </h2>
-
-//             <p className="mt-2 font-medium">
-//               Booking Starting at INR 30/- per km
-//             </p>
-
-//             <p className="mt-3 text-gray-600">
-//               A mobile technology lab bringing innovation directly to students.
-//             </p>
-
-//             <ul className="mt-3 space-y-1 text-gray-600">
-//               <li>• Innovation On Wheels</li>
-//               <li>• Empowering Students</li>
-//               <li>• Book for Schools & Colleges</li>
-//             </ul>
-
-//             <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-md">
-//               Book Now
-//             </button>
-//           </div>
-
-//         </div>
-//       </section>
-
-//       {/* CTA */}
-//       <section className="py-16 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-//         <h2 className="text-3xl font-bold mb-4">
-//           Transform Your School with AI & Robotics
-//         </h2>
-//         <button className="bg-white text-blue-600 px-6 py-3 rounded-full shadow">
-//           Contact Us
-//         </button>
-//       </section>
-
-//     </div>
-//   );
-// }
-
-
-
 "use client";
 
-import { useRef } from "react";
-import { useScroll } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { 
+  ShoppingCart, 
+  Zap, 
+  Cpu, 
+  Wifi, 
+  ArrowRight, 
+  Check, 
+  Sparkles,
+  Layers
+} from "lucide-react";
 
-import ProductCarousel from "@/components/our-product/ProductCarousel";
-import ParallaxCard from "@/components/our-product/ParallaxCard";
-
+// Preserved original product data database
 const products = [
   {
-    title: "IoT Training Kit",
-    price: "Starts INR 4999/-",
-    desc: "Dive into the world of IoT with our comprehensive fundamentals kit.",
-    features: [
-      "Sensors: Temperature, humidity, motion",
-      "Actuators: LED, motors",
-      "Arduino & Raspberry Pi",
-      "Wi-Fi, Bluetooth",
-    ],
-    images: ["/kit-frames/kit4.png", "/kit-frames/kit6.png"],
+    id: 1,
+    name: "IoT Training Kit",
+    description: "Empower your ideas with IoT innovation",
+    price: "₹4,999",
+    image: "/products-images/product1.jpg",
   },
   {
-    title: "AI Exploration Kit",
-    price: "Starts INR 7499/-",
-    desc: "Explore artificial intelligence with immersive learning tools.",
-    features: ["IoT Kit", "VR Box", "Motion Detection", "AR Demo"],
-    images: ["/products/ai1.png", "/products/ai2.png"],
+    id: 2,
+    name: "AI Exploration Kit",
+    description: "Inspiring Tomorrow's Innovators",
+    price: "₹7,999",
+    image: "/products-images/product2.jpg",
   },
   {
-    title: "Science Wall",
-    price: "",
-    desc: "Interactive science learning wall.",
-    features: ["14 models", "Custom branding", "School-ready setup"],
-    images: ["/products/science1.png", "/products/science2.png"],
+    id: 3,
+    name: "Robotics Starter Kit",
+    description: "Build smart robotic systems easily",
+    price: "₹5,499",
+    image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
   },
   {
-    title: "Virtual Reality Lab",
-    price: "Starts INR 1999/-",
-    desc: "Immersive VR learning experience.",
-    features: ["Interactive simulations", "Better understanding", "Engaging content"],
-    images: ["/products/vr1.png", "/products/vr2.png"],
+    id: 4,
+    name: "Drone Learning Kit",
+    description: "Experience next-gen aerial technology",
+    price: "₹8,999",
+    image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 5,
+    name: "Arduino Advanced Kit",
+    description: "Master embedded electronics projects",
+    price: "₹3,999",
+    image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 6,
+    name: "Smart Sensor Kit",
+    description: "Explore automation with sensors",
+    price: "₹4,499",
+    image: "https://images.unsplash.com/photo-1581092919535-7146ff1a5905?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 7,
+    name: "Machine Learning Kit",
+    description: "Hands-on AI and ML practical learning",
+    price: "₹9,999",
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    id: 8,
+    name: "Electronics Pro Kit",
+    description: "Advanced electronics experiments setup",
+    price: "₹6,499",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
-export default function OurProductsPage() {
+// Cards styled to match mockup and containing slugs to detail pages
+const displayCards = [
+  {
+    id: 1,
+    name: "IoT Training Kit",
+    description: "Empower your ideas with IoT innovation",
+    price: "₹4,999",
+    image: "/products-images/product1.jpg",
+    slug: "iot-training-kit"
+  },
+  {
+    id: 2,
+    name: "AI Exploration Kit",
+    description: "Inspiring Tomorrow's Innovators",
+    price: "₹7,999",
+    image: "/products-images/product2.jpg",
+    slug: "ai-exploration-kit"
+  },
+  {
+    id: 3,
+    name: "Robotics Starter Kit",
+    description: "Build smart robotic systems easily",
+    price: "₹5,499",
+    image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+    slug: "robotics-starter-kit"
+  },
+  {
+    id: 4,
+    name: "Drone Technology Kit",
+    description: "Experience next-gen aerial technology",
+    price: "₹8,999",
+    image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=1200&auto=format&fit=crop",
+    slug: "drone-technology-kit"
+  },
+  {
+    id: 5,
+    name: "VR Experience Kit",
+    description: "Immersive VR-based learning for next-gen education",
+    price: "₹6,999",
+    image: "/ai-innovation-images/virtualimg.jpg",
+    slug: "vr-experience-kit"
+  },
+  {
+    id: 6,
+    name: "Science Wall",
+    description: "Interactive science concepts explained visually",
+    price: "₹14,999",
+    image: "/ai-innovation-images/sciencewall.jpg",
+    slug: "science-wall"
+  },
+  {
+    id: 7,
+    name: "Basic Electronics Kit",
+    description: "Master embedded electronics projects",
+    price: "₹3,999",
+    image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+    slug: "basic-electronics-kit"
+  },
+  {
+    id: 8,
+    name: "AI Mechatronics Lab",
+    description: "Advanced AI and mechatronics lab integration setup",
+    price: "₹24,999",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
+    slug: "ai-mechatronics-lab"
+  }
+];
 
-  // ✅ PARALLAX HOOK
-  const parallaxRef = useRef(null);
+// Smart Technology Solutions data
+const solutions = [
+  {
+    id: 1,
+    title: "Science Wall",
+    badge: "Interactive Learning",
+    description: "Transforming the Science Wall into an interactive educational experience helping students explore scientific concepts through engaging visual learning.",
+    features: [
+      "Interactive scientific models",
+      "Educational displays",
+      "Visual learning experience"
+    ],
+    image: "/ai-innovation-images/sciencewall.jpg",
+    theme: "blue",
+    slug: "science-wall"
+  },
+  {
+    id: 2,
+    title: "Virtual Reality Lab",
+    badge: "Immersive Technology",
+    description: "Step into a world where learning knows no limits with our advanced VR lab designed for interactive educational experiences.",
+    features: [
+      "VR-enabled classrooms",
+      "Immersive simulations",
+      "Smart learning environment"
+    ],
+    image: "/ai-innovation-images/virtualimg.jpg",
+    theme: "green",
+    slug: "vr-experience-kit"
+  },
+  {
+    id: 3,
+    title: "Customized Solutions",
+    badge: "Smart Innovation",
+    description: "Tailored technology solutions crafted to meet the needs of modern institutions and innovation-driven organizations.",
+    features: [
+      "AI & IoT based systems",
+      "Smart automation",
+      "Industry-ready solutions"
+    ],
+    image: "/custom-solution.png",
+    theme: "blue",
+    slug: "ai-mechatronics-lab"
+  }
+];
 
-  const { scrollYProgress } = useScroll({
-    target: parallaxRef,
-    offset: ["start start", "end end"],
-  });
+// SVGs for Background Circuit Traces
+const CircuitSVGLeft = () => (
+  <svg
+    className="absolute left-0 top-[20%] pointer-events-none opacity-25 text-blue-500/20 hidden lg:block"
+    width="180"
+    height="360"
+    viewBox="0 0 180 360"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M-20 40 H80 V160 H140 V280 H-20"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray="4 4"
+    />
+    <circle cx="80" cy="40" r="3.5" fill="currentColor" />
+    <circle cx="140" cy="160" r="3.5" fill="currentColor" />
+    <circle cx="80" cy="200" r="2" fill="currentColor" />
+    <circle cx="10" cy="280" r="3" fill="currentColor" />
+  </svg>
+);
 
+const CircuitSVGRight = () => (
+  <svg
+    className="absolute right-0 top-[40%] pointer-events-none opacity-25 text-cyan-500/20 hidden lg:block"
+    width="180"
+    height="360"
+    viewBox="0 0 180 360"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M200 60 H100 V180 H40 V300 H200"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeDasharray="4 4"
+    />
+    <circle cx="100" cy="60" r="3.5" fill="currentColor" />
+    <circle cx="40" cy="180" r="3.5" fill="currentColor" />
+    <circle cx="120" cy="240" r="2" fill="currentColor" />
+    <circle cx="170" cy="300" r="3" fill="currentColor" />
+  </svg>
+);
+
+export default function ProductsPage() {
   return (
-    <div className="bg-[#f8fafc]">
+    <div className="min-h-screen bg-[#fafbfc] text-slate-800 overflow-hidden relative pb-28 -mt-[100px] sm:-mt-[100px] md:-mt-[135px]">
+      {/* Decorative Radial Blur Gradient Blobs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-100/40 blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-50/40 blur-3xl pointer-events-none z-0" />
+      <div className="absolute bottom-[30%] left-[-15%] w-[600px] h-[600px] rounded-full bg-blue-50/30 blur-3xl pointer-events-none z-0" />
 
-      {/* HERO */}
-      <section className="py-20 text-center bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#2563eb] text-white -mt-40 pt-60 ">
-        <h1 className="text-4xl md:text-5xl font-bold">Our Products</h1>
-        <p className="mt-4 opacity-90">
-          Explore our innovative learning solutions
-        </p>
+      {/* SVG Background Grid & Circles (Slow Float Animations) */}
+      <motion.div 
+        animate={{ y: [0, -10, 0], x: [0, 5, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-12 left-8 text-slate-200/50 pointer-events-none z-0 select-none hidden md:block"
+      >
+        <svg width="120" height="120" fill="currentColor" viewBox="0 0 100 100">
+          <pattern id="grid-dots" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="1.5" fill="currentColor" className="text-slate-300/60" />
+          </pattern>
+          <rect width="100" height="100" fill="url(#grid-dots)" />
+        </svg>
+      </motion.div>
+
+      <motion.div 
+        animate={{ y: [0, 12, 0], x: [0, -8, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute top-[50%] left-[-50px] text-slate-200/50 pointer-events-none z-0 select-none hidden lg:block"
+      >
+        <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.75" className="text-slate-300/40">
+          <circle cx="50" cy="50" r="40" strokeDasharray="3 3" />
+          <circle cx="50" cy="50" r="28" />
+          <circle cx="50" cy="50" r="16" strokeDasharray="2 2" />
+        </svg>
+      </motion.div>
+
+      <motion.div 
+        animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        className="absolute top-20 right-10 text-slate-200/50 pointer-events-none z-0 select-none hidden md:block"
+      >
+        <svg width="150" height="150" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.75" className="text-slate-300/40">
+          <line x1="10" y1="10" x2="90" y2="90" strokeDasharray="4 4" />
+          <line x1="90" y1="10" x2="10" y2="90" />
+          <circle cx="50" cy="50" r="20" className="fill-white/80" />
+        </svg>
+      </motion.div>
+
+      <CircuitSVGLeft />
+      <CircuitSVGRight />
+
+      {/* ==========================================
+          SECTION 1: HERO
+          ========================================== */}
+      <section className="relative pt-[120px] sm:pt-[128px] md:pt-[136px] pb-20 z-10 max-w-7xl mx-auto px-6 text-center">
+        <div className="flex flex-col items-center">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-blue-50/80 border border-blue-100/60 px-4 py-1.5 rounded-full mb-6 shadow-sm"
+          >
+            <Sparkles className="w-4 h-4 text-blue-500" />
+            <span className="text-blue-600 text-xs font-extrabold tracking-[0.12em] uppercase">
+              Our Innovation Kits
+            </span>
+          </motion.div>
+
+          {/* Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#0f172a]"
+          >
+            Explore Smart{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+              Tech Products
+            </span>
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="text-slate-500 text-base md:text-lg mt-6 max-w-2xl mx-auto leading-relaxed"
+          >
+            Professional innovation kits designed for students, creators, and
+            future engineers to build real-world IoT and AI projects.
+          </motion.p>
+        </div>
       </section>
 
-      {/* FEATURED */}
-      <section className="py-16 max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-blue-600 text-center mb-10">
-          Featured Products
-        </h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+      {/* ==========================================
+          SECTION 2: PRODUCT CARDS GRID
+          ========================================== */}
+      <section className="max-w-7xl mx-auto px-6 pb-24 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8">
+          {displayCards.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial="initial"
+              whileHover="hover"
+              variants={{
+                initial: { y: 0, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.03)", borderColor: "#f1f5f9" },
+                hover: {
+                  y: -8,
+                  boxShadow: "0 20px 40px -10px rgba(37,99,235,0.08)",
+                  borderColor: "#bfdbfe",
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }
+              }}
+              className="bg-white/80 border backdrop-blur-xl rounded-[32px] overflow-hidden group flex flex-col h-full border-slate-100 transition-all duration-300"
             >
-              <img src={item.images[0]} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h3 className="font-semibold">{item.title}</h3>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+              {/* Wrapped Image & Info in Link for Redesigned User Journey */}
+              <Link href={`/our-products/${item.slug}`} className="flex flex-col flex-grow cursor-pointer">
+                {/* Product Image Container */}
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-50 border-b border-slate-100/60">
+                  <motion.div
+                    variants={{
+                      initial: { scale: 1 },
+                      hover: { scale: 1.05, transition: { duration: 0.3 } }
+                    }}
+                    className="w-full h-full relative"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-contain p-6 transition-transform duration-500"
+                    />
+                  </motion.div>
+                </div>
+
+                {/* Product Info Block */}
+                <div className="p-6 flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">
+                      {item.name}
+                    </h3>
+
+                    <p className="text-sm text-slate-500 mt-2 leading-relaxed h-10 line-clamp-2">
+                      {item.description}
+                    </p>
+
+                    <div className="flex items-center justify-between mt-6">
+                      <motion.span
+                        variants={{
+                          initial: { scale: 1 },
+                          hover: { scale: 1.05, transition: { duration: 0.3 } }
+                        }}
+                        className="text-2xl font-extrabold text-blue-600 tracking-tight"
+                      >
+                        {item.price}
+                      </motion.span>
+
+                      <span className="bg-blue-50 text-blue-600 border border-blue-100/50 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide">
+                        Premium
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Interactive Action Buttons */}
+              <div className="px-6 pb-6 flex gap-3">
+                <Link href={`/our-products/${item.slug}`} className="flex-1">
+                  <motion.button 
+                    variants={{
+                      initial: { backgroundColor: "#f8fafc" },
+                      hover: { backgroundColor: "#e2e8f0" }
+                    }}
+                    className="w-full py-3 px-4 text-slate-700 text-xs md:text-sm font-semibold rounded-2xl border border-slate-200/60 transition-all duration-300 active:scale-95 text-center"
+                  >
+                    Add to Cart
+                  </motion.button>
+                </Link>
+                <Link href={`/our-products/${item.slug}`} className="flex-1">
+                  <motion.button 
+                    variants={{
+                      initial: { boxShadow: "0 0px 0px rgba(37,99,235,0)" },
+                      hover: { boxShadow: "0 10px 20px rgba(37,99,235,0.22)" }
+                    }}
+                    className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs md:text-sm font-bold rounded-2xl flex items-center justify-center gap-1.5 transition-all duration-300 group/btn"
+                  >
+                    <span>Buy Now</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  </motion.button>
+                </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* 🔥 PARALLAX DETAILED CARDS */}
-      <section ref={parallaxRef} className="relative h-[400vh]">
+      {/* ==========================================
+          SECTION 3: SMART SOLUTIONS
+          ========================================== */}
+      <section className="max-w-7xl mx-auto px-6 pb-20 relative z-10">
+        {/* Section Heading */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-blue-50/80 border border-blue-100/60 px-4 py-1.5 rounded-full mb-4 shadow-sm">
+            <Layers className="w-4 h-4 text-blue-500" />
+            <span className="text-blue-600 text-xs font-extrabold tracking-[0.12em] uppercase">
+              Our Solutions
+            </span>
+          </div>
 
-        {products.map((item, i, arr) => {
-          const reverse = i % 2 !== 0;
-          const targetScale = 1 - ((arr.length - i) * 0.05);
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-[#0f172a]">
+            Smart Technology <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Solutions</span>
+          </h2>
 
-          return (
-            <ParallaxCard
-              key={i}
-              i={i}
-              progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              targetScale={targetScale}
-            >
+          <p className="text-slate-500 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+            Innovative educational and technology-driven solutions designed to
+            empower institutions, students, and future innovators.
+          </p>
+        </div>
 
-              {/* <div className="relative rounded-2xl overflow-hidden shadow-xl"> */}
+        {/* Alternating Solution Block Cards */}
+        <div className="flex flex-col gap-14">
+          {solutions.map((sol, index) => {
+            const isImageRight = index % 2 === 1;
 
-                {/* overlay */}
-                {/* <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 to-[#1e293b]/80"></div> */}
-
-
-
-                <div className="relative rounded-2xl overflow-hidden shadow-xl bg-[#0f172a]">
-
-  {/* 🔥 FIXED GRADIENT BG */}
-  <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 to-[#1e293b]/80 z-0"></div>
-
-                <div className="relative z-10 p-6">
-
-                  <div className="grid md:grid-cols-2 gap-8 items-center">
-
-                    {/* IMAGE */}
-                    <div className={reverse ? "md:order-2" : ""}>
-                      <ProductCarousel images={item.images} />
-                    </div>
-
-                    {/* TEXT */}
-                    <div className={`${reverse ? "md:order-1" : ""} text-white`}>
-                      
-                      <h3 className="text-2xl font-bold">
-                        {item.title}
-                      </h3>
-
-                      {item.price && (
-                        <p className="text-gray-300 mt-1">{item.price}</p>
-                      )}
-
-                      <div className="h-[3px] w-14 bg-yellow-400 my-3"></div>
-
-                      <p className="text-gray-300 text-sm mb-3">
-                        {item.desc}
-                      </p>
-
-                      <ul className="text-sm text-gray-300 space-y-1">
-                        {item.features.map((f, idx) => (
-                          <li key={idx}>• {f}</li>
-                        ))}
-                      </ul>
-
-                      <button className="mt-4 bg-blue-600 px-5 py-2 rounded-full">
-                        Learn More
-                      </button>
-
-                    </div>
-
+            return (
+              <motion.div
+                key={sol.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.15 }}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="group bg-white border border-slate-100/80 rounded-[32px] p-6 lg:p-8 shadow-[0_15px_45px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500"
+              >
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                  
+                  {/* Solution Block Image */}
+                  <div className={`relative h-[260px] sm:h-[320px] lg:h-[380px] w-full rounded-[24px] overflow-hidden bg-slate-50 ${isImageRight ? "md:order-2" : ""}`}>
+                    <Image
+                      src={sol.image}
+                      alt={sol.title}
+                      fill
+                      className="object-cover group-hover:scale-[1.04] transition-transform duration-700"
+                    />
                   </div>
 
+                  {/* Solution Block Content */}
+                  <div className={`flex flex-col justify-center ${isImageRight ? "md:order-1" : ""}`}>
+                    {/* Theme Badge */}
+                    <span className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase w-fit border ${sol.theme === "green"
+                      ? "bg-emerald-50/80 border-emerald-100 text-emerald-600"
+                      : "bg-blue-50/80 border-blue-100 text-blue-600"
+                      }`}>
+                      {sol.badge}
+                    </span>
+
+                    <h3 className="text-3xl lg:text-4xl font-extrabold text-slate-800 tracking-tight mt-4 mb-4">
+                      {sol.title}
+                    </h3>
+
+                    <p className="text-slate-500 text-base lg:text-lg leading-relaxed mb-6">
+                      {sol.description}
+                    </p>
+
+                    {/* Staggered features rendering */}
+                    <motion.ul 
+                      variants={{
+                        hidden: {},
+                        visible: { transition: { staggerChildren: 0.15 } }
+                      }}
+                      className="space-y-3.5 mb-8"
+                    >
+                      {sol.features.map((feature, fIdx) => (
+                        <motion.li 
+                          key={fIdx}
+                          variants={{
+                            hidden: { opacity: 0, x: -12 },
+                            visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
+                          }}
+                          className="flex items-center gap-3.5 text-slate-600 text-sm lg:text-base"
+                        >
+                          <span className={`w-5.5 h-5.5 rounded-full flex items-center justify-center border flex-shrink-0 ${sol.theme === "green"
+                            ? "bg-emerald-50 border-emerald-100 text-emerald-500"
+                            : "bg-blue-50 border-blue-100 text-blue-500"
+                            }`}>
+                            <Check className="w-3.5 h-3.5 stroke-[3]" />
+                          </span>
+                          <span className="font-medium">{feature}</span>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+
+                    {/* CTA Button */}
+                    <Link href={`/our-products/${sol.slug}`}>
+                      <button className={`px-8 py-3.5 rounded-xl font-bold flex items-center gap-2 w-fit transition-all duration-300 active:scale-95 group/sol-btn ${sol.theme === "green"
+                        ? "bg-emerald-500 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 text-white"
+                        : "bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20 text-white"
+                        }`}>
+                        <span>Explore More</span>
+                        <ArrowRight className="w-4.5 h-4.5 transition-transform duration-300 group-hover/sol-btn:translate-x-1" />
+                      </button>
+                    </Link>
+
+                  </div>
                 </div>
-              </div>
-
-            </ParallaxCard>
-          );
-        })}
-
-      </section>
-
-      {/* CUSTOM CARD */}
-      <section className="py-16 max-w-6xl mx-auto px-6">
-        <div className="relative rounded-2xl overflow-hidden shadow-xl">
-          <img src="/products/ai-card.png" className="w-full h-[350px] object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center p-8">
-            <div className="text-white space-y-3 max-w-md">
-              <h2 className="text-3xl font-bold">WE HAVE THE SOLUTION YOU NEED</h2>
-              <p className="text-lg font-semibold">YOU THINK, WE MAKE</p>
-              <button className="bg-blue-600 px-5 py-2 rounded-md">Explore</button>
-            </div>
-          </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
-
-      {/* CUSTOMIZED */}
-      <section className="py-16 max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <img src="/products/custom-banner.png" className="rounded-xl shadow-lg" />
-          <div>
-            <h2 className="text-3xl font-bold">
-              Customized Solutions: “You Think, We Make”
-            </h2>
-            <p className="mt-2 font-medium">Consultation Starting INR 3999/-</p>
-            <p className="mt-3 text-gray-600">
-              We turn your ideas into real solutions tailored to your needs.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 text-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-        <h2 className="text-3xl font-bold mb-4">
-          Transform Your School with AI & Robotics
-        </h2>
-        <button className="bg-white text-blue-600 px-6 py-3 rounded-full shadow">
-          Contact Us
-        </button>
-      </section>
-
     </div>
   );
 }

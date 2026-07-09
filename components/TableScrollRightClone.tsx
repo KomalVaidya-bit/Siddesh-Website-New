@@ -35,32 +35,32 @@ const KIT_STAGE_CONTENT: KitStageContent[] = [
 	{
 		heading: "Basic Electronics Exploration Kit",
 		description:
-			"Dummy content: foundational electronics kit with hands-on activities for circuits, components, and guided beginner experiments.",
+			"Understand electronic components and their functions. Build simple circuits through hands-on activities.Develop a strong foundation in electronics and problem-solving.",
 	},
 	{
 		heading: "Robotics Arms Kit + Robotics Starter Kit",
 		description:
-			"Dummy content: dual robotics stage focused on assembly basics, movement logic, and starter automation workflows.",
+			"Design, build and program intelligent robots. Learn sensors, motors and robotic controllers.Develop automation and logical thinking skills.",
 	},
 	{
 		heading: "IoT Training Kit + DIY IoT Kit",
 		description:
-			"Dummy content: connected systems stage with sensor tasks, simple dashboards, and practical smart-device concepts.",
+			"Connect smart devices and collect real-time data. Work with sensors, cloud platforms and dashboards.Build practical IoT solutions for everyday applications. ",
 	},
 	{
 		heading: "RC Drone Kit + DIY Drone Kit",
 		description:
-			"Dummy content: drone stage for flight concepts, control familiarity, and maker-style build-and-test challenges.",
+			"Learn drone systems and flight fundamentals. Understand navigation, control and safety. Apply drone technology in real-world projects.",
 	},
 	{
 		heading: "VR/AR Experience Kit",
 		description:
-			"Dummy content: immersive learning stage introducing interactive visual experiences and guided mixed-reality exploration.",
+			"Create immersive virtual environments. Design interactive VR experiencesLearn VR tools for education and innovation. Blend digital content with the real world.",
 	},
 	{
 		heading: "3D Printing Kit (Black)",
 		description:
-			"Dummy content: final fabrication stage for model preparation, print workflow understanding, and rapid prototyping exposure.",
+			"Learn 3D design and modeling fundamentals. Transform ideas into functional prototypes. Understand additive manufacturing techniques.",
 	},
 ];
 
@@ -445,67 +445,66 @@ export default function TableScrollRightClone() {
 	const activeContent = KIT_STAGE_CONTENT[contentIndex];
 
 	return (
-	<section
-		ref={sectionRef}
-		className="w-full overflow-x-hidden bg-[#eef0ed] py-3 sm:py-4 md:py-8"
-	>
-		<div className="mx-auto w-full max-w-7xl overflow-x-hidden px-3 sm:px-6">
+		<section
+			ref={sectionRef}
+			className="w-full overflow-x-hidden bg-[#eef0ed] py-3 sm:py-4 md:py-8"
+		>
+			<div className="mx-auto w-full max-w-7xl overflow-x-hidden px-3 sm:px-6">
 
-			{/* ✅ FIXED GRID */}
-			<div className="grid grid-cols-1 md:grid-cols-[0.58fr_1.42fr] items-start gap-3 sm:gap-4 md:min-h-screen md:items-center md:gap-7">
+				{/* ✅ FIXED GRID */}
+				<div className="grid grid-cols-1 md:grid-cols-[0.58fr_1.42fr] items-start gap-3 sm:gap-4 md:min-h-screen md:items-center md:gap-7">
 
-				{/* ✅ CANVAS FIRST ON MOBILE */}
-				<div className="relative order-1 md:order-2 min-w-0 h-[60vh] sm:h-[420px] md:h-[520px] lg:h-[680px] w-full translate-x-0 md:translate-x-3 lg:w-[98%] lg:translate-x-6">
-					<canvas ref={canvasRef} className="h-full w-full" />
-				</div>
-
-				{/* ✅ TEXT CARD */}
-				<div className="order-2 md:order-1 min-w-0 h-auto min-h-[220px] md:h-auto overflow-hidden md:overflow-visible rounded-2xl sm:rounded-3xl border border-[#d2d8d1] bg-gradient-to-b from-[#f8faf7] to-[#edf2ed] p-4 sm:p-5 md:p-7 shadow-[0_20px_55px_-40px_rgba(33,58,42,0.52)]">
-
-					<p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#4f6a59]">
-						Stages
-					</p>
-
-					<div key={activeStage} className="mt-3 space-y-3">
-						<span className="inline-flex rounded-full border border-[#c8d2c9] bg-white px-3 py-1 text-xs font-semibold text-[#2f4c3c]">
-							Stage {String(activeStage).padStart(2, "0")}
-						</span>
-
-						<h3 className="text-lg sm:text-2xl lg:text-[2rem] font-semibold leading-snug text-[#1e3528]">
-							{activeContent.heading}
-						</h3>
-
-						<p className="max-w-md text-xs sm:text-sm lg:text-base leading-6 sm:leading-7 text-[#41594b]">
-							{activeContent.description}
-						</p>
+					{/* ✅ CANVAS FIRST ON MOBILE */}
+					<div className="relative order-1 md:order-2 min-w-0 h-[60vh] sm:h-[420px] md:h-[520px] lg:h-[680px] w-full translate-x-0 md:translate-x-3 lg:w-[98%] lg:translate-x-6">
+						<canvas ref={canvasRef} className="h-full w-full" />
 					</div>
 
-					{/* ✅ STAGE BUTTONS */}
-					<div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
-						{KIT_STAGE_CONTENT.map((content, index) => {
-							const isActive = index + 1 === activeStage;
+					{/* ✅ TEXT CARD */}
+					<div className="order-2 md:order-1 min-w-0 h-auto min-h-[220px] md:h-auto overflow-hidden md:overflow-visible rounded-2xl sm:rounded-3xl border border-[#d2d8d1] bg-gradient-to-b from-[#f8faf7] to-[#edf2ed] p-4 sm:p-5 md:p-7 shadow-[0_20px_55px_-40px_rgba(33,58,42,0.52)]">
 
-							return (
-								<button
-									type="button"
-									key={content.heading}
-									className={`cursor-default rounded-lg border px-2 py-2 text-xs font-medium transition-all duration-300 ${
-										isActive
+						<p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#4f6a59]">
+							Stages
+						</p>
+
+						<div key={activeStage} className="mt-3 space-y-3">
+							<span className="inline-flex rounded-full border border-[#c8d2c9] bg-white px-3 py-1 text-xs font-semibold text-[#2f4c3c]">
+								Stage {String(activeStage).padStart(2, "0")}
+							</span>
+
+							<h3 className="text-lg sm:text-2xl lg:text-[2rem] font-semibold leading-snug text-[#1e3528]">
+								{activeContent.heading}
+							</h3>
+
+							<p className="max-w-md text-xs sm:text-sm lg:text-base leading-6 sm:leading-7 text-[#41594b]">
+								{activeContent.description}
+							</p>
+						</div>
+
+						{/* ✅ STAGE BUTTONS */}
+						<div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+							{KIT_STAGE_CONTENT.map((content, index) => {
+								const isActive = index + 1 === activeStage;
+
+								return (
+									<button
+										type="button"
+										key={content.heading}
+										className={`cursor-default rounded-lg border px-2 py-2 text-xs font-medium transition-all duration-300 ${isActive
 											? "border-[#1e4fa8] bg-[#1e4fa8] text-white shadow-md"
 											: "border-[#d3dff2] bg-white text-[#4a628c]"
-									}`}
-									aria-current={isActive ? "true" : undefined}
-									tabIndex={-1}
-								>
-									Stage {String(index + 1).padStart(2, "0")}
-								</button>
-							);
-						})}
+											}`}
+										aria-current={isActive ? "true" : undefined}
+										tabIndex={-1}
+									>
+										Stage {String(index + 1).padStart(2, "0")}
+									</button>
+								);
+							})}
+						</div>
 					</div>
-				</div>
 
+				</div>
 			</div>
-		</div>
-	</section>
-);
+		</section>
+	);
 }

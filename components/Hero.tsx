@@ -6,6 +6,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import VerticalImageCarousel from "./VerticalImageCarousel";
+import Link from "next/link";
 
 const heroVideo =
   "/videos/siddesh-home-video.mp4"; // replace with your video URL
@@ -13,17 +14,17 @@ const heroVideo =
 export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden -mt-40 pt-25   ">
-      
+
       {/* 🎥 Video Background */}
       <video
-  className="absolute inset-0 -z-10 h-full w-full object-cover"
-  autoPlay
-  loop
-  muted
-  playsInline
->
-  <source src="/videos/siddesh-home-video.mp4" type="video/mp4" />
-</video>
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/videos/siddesh-home-video.mp4" type="video/mp4" />
+      </video>
 
       {/* Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0b1b3a]/40 via-[#0b1b3a]/20 to-[#0b1b3a]/50" />
@@ -49,13 +50,15 @@ export default function Hero() {
             Empowering Education with Innovative Solutions
           </p>
 
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="mt-4 rounded-xl bg-[#3B5BDB] px-6 py-3 text-sm font-semibold shadow-lg shadow-[#3B5BDB]/40"
-          >
-            Explore Us
-          </motion.button>
+          <Link href="/about">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-4 rounded-xl bg-[#3B5BDB] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#3B5BDB]/40"
+            >
+              Explore Us
+            </motion.button>
+          </Link>
         </motion.div>
 
         <motion.div

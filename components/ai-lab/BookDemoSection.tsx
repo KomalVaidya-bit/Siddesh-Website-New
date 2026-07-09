@@ -41,7 +41,7 @@ export default function DemoSection() {
         </h2>
         <div className="w-24 h-1 bg-yellow-400 mx-auto mt-4 mb-6 rounded"></div>
         <p className="text-blue-100">
-          Experience the power of AI and Robotics with a hands-on demo tailored
+          Experience the ThinkSphere 360 Composite Skill Lab with a hands-on demo tailored
           for your school.
         </p>
       </div>
@@ -60,7 +60,8 @@ export default function DemoSection() {
               e.preventDefault();
               setSuccess(true);
               setTimeout(() => setSuccess(false), 4000);
-                 (e.target as HTMLFormElement).reset();            }}
+              (e.target as HTMLFormElement).reset();
+            }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
@@ -184,7 +185,7 @@ export default function DemoSection() {
         {/* RIGHT CONTENT */}
         <div className="demo-content">
           <h3 className="text-2xl md:text-3xl font-bold">
-            Experience the power of AI and Robotics
+            Experience the  ThinkSphere 360 Composite Skill Lab
           </h3>
           <div className="w-16 h-1 bg-yellow-400 mt-3 mb-5"></div>
           <p className="text-blue-100 leading-relaxed">

@@ -7,8 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const labsItems = [
   {
-    label: "AI and Mechatronics Innovation Lab",
-    href: "/labs/ai-and-mechatronics-innovation-lab",
+    label: "Think Sphere 360 Composite Skill Lab",
+    href: "/labs/think-sphere-360-composite-skill-lab",
   },
   { label: "Science Lab", href: "/labs/science-lab" },
   { label: "Mathematics Lab", href: "/labs/mathematics-lab" },
@@ -175,72 +175,72 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
               {...mobilePanelMotion}
               className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col gap-4 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.25)] md:hidden"
             >
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold text-[#20306f]">Siddesh</span>
-              <button
-                type="button"
-                className="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600"
-                onClick={() => setMobileOpen(false)}
-              >
-                X
-              </button>
-            </div>
+              <div className="flex items-center justify-between">
+                <span className="text-lg font-semibold text-[#20306f]">Siddesh</span>
+                <button
+                  type="button"
+                  className="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  X
+                </button>
+              </div>
 
-            <div className="flex flex-col gap-1 text-sm font-medium text-slate-700">
-              {menuItems.map((item) => {
-                if (item.hasDropdown) {
+              <div className="flex flex-col gap-1 text-sm font-medium text-slate-700">
+                {menuItems.map((item) => {
+                  if (item.hasDropdown) {
+                    return (
+                      <div key={item.label} className="flex flex-col">
+                        <button
+                          type="button"
+                          className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
+                          onClick={() => setMobileLabsOpen((prev) => !prev)}
+                          aria-expanded={mobileLabsOpen}
+                        >
+                          <span>{item.label}</span>
+                          <span className="text-xs">{mobileLabsOpen ? "▴" : "▾"}</span>
+                        </button>
+
+                        <AnimatePresence>
+                          {mobileLabsOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2, ease: "easeOut" as const }}
+                              className="overflow-hidden"
+                            >
+                              <div className="mt-2 flex flex-col gap-1 pl-2">
+                                {labsItems.map((lab) => (
+                                  <Link
+                                    key={lab.label}
+                                    href={lab.href}
+                                    className="rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {lab.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
+
                   return (
-                    <div key={item.label} className="flex flex-col">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                        onClick={() => setMobileLabsOpen((prev) => !prev)}
-                        aria-expanded={mobileLabsOpen}
-                      >
-                        <span>{item.label}</span>
-                        <span className="text-xs">{mobileLabsOpen ? "▴" : "▾"}</span>
-                      </button>
-
-                      <AnimatePresence>
-                        {mobileLabsOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.2, ease: "easeOut" as const }}
-                            className="overflow-hidden"
-                          >
-                            <div className="mt-2 flex flex-col gap-1 pl-2">
-                              {labsItems.map((lab) => (
-                                <Link
-                                  key={lab.label}
-                                  href={lab.href}
-                                  className="rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                                  onClick={() => setMobileOpen(false)}
-                                >
-                                  {lab.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="rounded-xl px-3 py-2 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
                   );
-                }
-
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="rounded-xl px-3 py-2 transition-colors hover:bg-[#3B5BDB]/10 hover:text-[#3B5BDB]"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
+                })}
+              </div>
             </motion.aside>
           )}
         </AnimatePresence>

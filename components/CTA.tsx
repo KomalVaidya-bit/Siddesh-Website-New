@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const ctaMotion = {
   initial: { opacity: 0, y: 18 },
@@ -17,13 +18,15 @@ export default function CTA() {
           <h2 className="text-2xl font-semibold text-[#1b2a28] md:text-3xl">
             Ready to take the next step in embracing technology?
           </h2>
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="mt-5 rounded-xl bg-[#3B5BDB] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#3B5BDB]/30"
-          >
-            Contact Us
-          </motion.button>
+          <Link href="/contact-us">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-5 rounded-xl bg-[#3B5BDB] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#3B5BDB]/30"
+            >
+              Contact Us
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

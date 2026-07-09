@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const pricing = [
   {
@@ -12,6 +13,7 @@ const pricing = [
       "Project-based challenges",
     ],
     cta: "Get Details",
+    link: "/our-products/iot-training-kit",
   },
   {
     title: "AI Exploration Kit",
@@ -22,6 +24,7 @@ const pricing = [
       "Mentor support sessions",
     ],
     cta: "Explore Kit",
+    link: "/our-products",
   },
   {
     title: "Science Wall",
@@ -32,6 +35,7 @@ const pricing = [
       "On-site deployment support",
     ],
     cta: "Talk to Sales",
+    link: "/our-products/science-wall",
   },
 ];
 
@@ -71,13 +75,15 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-6 w-full rounded-xl bg-[#3B5BDB] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#3B5BDB]/30"
-              >
-                {plan.cta}
-              </motion.button>
+              <Link href={plan.link ?? "#"}>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="mt-6 w-full rounded-xl bg-[#3B5BDB] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-[#3B5BDB]/30"
+                >
+                  {plan.cta}
+                </motion.button>
+              </Link>
             </motion.div>
           ))}
         </div>
