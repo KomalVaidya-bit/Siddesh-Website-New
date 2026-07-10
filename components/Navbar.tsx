@@ -63,36 +63,79 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
       <header
         className={`w-full ${floating ? "fixed inset-x-0 top-0 z-50" : "sticky top-0 z-50"}`}
       >
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-          <nav className="relative flex w-full items-center justify-between rounded-2xl border border-white/30 bg-white/70 px-4 py-0.5 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-lg font-semibold tracking-tight text-[#20306f]"
-            >
-              <Image
-                src="/siddesh-marathi-logo.png"
-                alt="Siddesh"
-                width={700}
-                height={240}
-                className="max-h-20 md:max-h-24 w-auto object-contain"
-                priority
-              />
-              <span className="sr-only">Siddesh</span>
-            </Link>
+        <div className="mx-auto flex w-[92%] lg:w-[94%] max-w-7xl items-center justify-between py-4 md:py-5">
+          <nav className="relative flex w-full items-center justify-between rounded-[24px] border border-white/40 bg-white/80 pl-4 md:pl-6 pr-4 md:pr-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] backdrop-blur-md h-[80px] md:h-[88px]">
+            
+            {/* Logos Group */}
+            <div className="flex items-center gap-2.5 h-full">
+              {/* Siddesh Logo */}
+              <Link
+                href="/"
+                className="flex items-center tracking-tight text-[#20306f]"
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex items-center"
+                >
+                  <Image
+                    src="/siddesh-marathi-logo.png"
+                    alt="Siddesh"
+                    width={438}
+                    height={195}
+                    style={{ width: "auto" }}
+                    className="h-8 md:h-[44px] object-contain"
+                    priority
+                  />
+                </motion.div>
+                <span className="sr-only">Siddesh</span>
+              </Link>
 
-            <div className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
+              {/* Thin vertical divider (1px, light gray) */}
+              <div className="h-8 md:h-[48px] w-[1px] bg-slate-300/60" />
+
+              {/* ThinkSphere Partner Logo */}
+              <Link href="/labs/think-sphere-360-composite-skill-lab">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  whileHover={{ scale: 1.03 }}
+                  className="cursor-pointer transition-transform duration-300 ease-out flex items-center"
+                >
+                  <Image
+                    src="/think-sphere-logo.png"
+                    alt="ThinkSphere 360 Logo"
+                    width={1133}
+                    height={871}
+                    style={{ width: "auto" }}
+                    className="h-[44px] md:h-[60px] object-contain"
+                    priority
+                  />
+                </motion.div>
+              </Link>
+            </div>
+
+            {/* Navigation Menu */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="hidden items-center justify-center gap-8 lg:gap-10 text-[17px] lg:text-[18px] font-medium text-slate-700 md:flex h-full ml-auto mr-4 lg:mr-8"
+            >
               {menuItems.map((item) => {
                 if (item.hasDropdown) {
                   return (
                     <div
                       key={item.label}
-                      className="relative"
+                      className="relative flex items-center h-full"
                       onMouseEnter={() => setDesktopLabsOpen(true)}
                       onMouseLeave={() => setDesktopLabsOpen(false)}
                     >
                       <button
                         type="button"
-                        className="flex items-center gap-1 rounded-lg px-2 py-1 text-slate-700 transition-colors hover:text-[#3B5BDB]"
+                        className="relative flex items-center gap-1 px-1 py-1.5 text-slate-700 transition-colors duration-[250ms] ease-in-out hover:text-[#3B5BDB] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:bg-[#3B5BDB] after:transition-transform after:duration-[250ms] after:ease-in-out after:origin-left hover:after:scale-x-100"
                         onClick={() => setDesktopLabsOpen((prev) => !prev)}
                         aria-expanded={desktopLabsOpen}
                       >
@@ -104,7 +147,7 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
                         {desktopLabsOpen && (
                           <motion.div
                             {...dropdownMotion}
-                            className="absolute right-0 top-full mt-3 w-64 rounded-2xl border border-white/60 bg-white/95 p-2 shadow-[0_18px_45px_rgba(15,23,42,0.2)] backdrop-blur"
+                            className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-white/60 bg-white/95 p-2 shadow-[0_18px_45px_rgba(15,23,42,0.2)] backdrop-blur z-50"
                           >
                             <div className="flex flex-col gap-1">
                               {labsItems.map((lab) => (
@@ -129,13 +172,13 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="rounded-lg px-2 py-1 transition-colors hover:text-[#3B5BDB]"
+                    className="relative px-1 py-1.5 text-slate-700 transition-colors duration-[250ms] ease-in-out hover:text-[#3B5BDB] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:bg-[#3B5BDB] after:transition-transform after:duration-[250ms] after:ease-in-out after:origin-left hover:after:scale-x-100"
                   >
                     {item.label}
                   </Link>
                 );
               })}
-            </div>
+            </motion.div>
 
             <button
               type="button"
@@ -246,7 +289,7 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
         </AnimatePresence>
       </header>
 
-      {floating && !overlay ? <div className="h-[88px] sm:h-[96px] md:h-[104px]" aria-hidden /> : null}
+      {floating && !overlay ? <div className="h-[112px] md:h-[128px]" aria-hidden /> : null}
     </>
   );
 }

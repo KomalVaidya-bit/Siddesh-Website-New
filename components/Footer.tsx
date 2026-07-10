@@ -28,13 +28,13 @@ export default function Footer() {
       >
         <div className="flex flex-col gap-5">
           <div className="flex items-center gap-4">
-            <div className="bg-white rounded-2xl p-2 flex items-center justify-center shadow-lg border border-slate-700/20">
+            <div className="bg-white rounded-2xl p-2.5 flex items-center justify-center shadow-lg border border-slate-700/20">
               <Image
                 src="/siddesh logo.png"
                 alt="Siddesh Logo"
-                width={150}
-                height={80}
-                className="object-contain"
+                width={190}
+                height={100}
+                className="object-contain h-14 w-auto"
               />
             </div>
             <div className="flex flex-col">
