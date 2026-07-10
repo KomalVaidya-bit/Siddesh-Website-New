@@ -21,7 +21,7 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0f172a] py-12 text-white">
+    <footer className="relative z-10 bg-[#0f172a] py-12 text-white">
       <motion.div
         {...footerMotion}
         className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-3"

@@ -35,7 +35,7 @@ const products = [
     name: "Robotics Starter Kit",
     description: "Build smart robotic systems easily",
     price: "₹5,499",
-    image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+    image: "/products-images/robotics-starter-kit.png",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const products = [
     name: "Arduino Advanced Kit",
     description: "Master embedded electronics projects",
     price: "₹3,999",
-    image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+    image: "/products-images/basic-electronic-kit.png",
   },
   {
     id: 6,
@@ -97,7 +97,7 @@ const displayCards = [
     name: "Robotics Starter Kit",
     description: "Build smart robotic systems easily",
     price: "₹5,499",
-    image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+    image: "/products-images/robotics-starter-kit.png",
     slug: "robotics-starter-kit"
   },
   {
@@ -113,32 +113,16 @@ const displayCards = [
     name: "VR Experience Kit",
     description: "Immersive VR-based learning for next-gen education",
     price: "₹6,999",
-    image: "/ai-innovation-images/virtualimg.jpg",
+    image: "/products-images/vrar-kit.png",
     slug: "vr-experience-kit"
-  },
-  {
-    id: 6,
-    name: "Science Wall",
-    description: "Interactive science concepts explained visually",
-    price: "₹14,999",
-    image: "/ai-innovation-images/sciencewall.jpg",
-    slug: "science-wall"
   },
   {
     id: 7,
     name: "Basic Electronics Kit",
     description: "Master embedded electronics projects",
     price: "₹3,999",
-    image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+    image: "/products-images/basic-electronic-kit.png",
     slug: "basic-electronics-kit"
-  },
-  {
-    id: 8,
-    name: "AI Mechatronics Lab",
-    description: "Advanced AI and mechatronics lab integration setup",
-    price: "₹24,999",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
-    slug: "ai-mechatronics-lab"
   }
 ];
 

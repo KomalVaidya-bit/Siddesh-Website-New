@@ -143,15 +143,15 @@ function TechCard({ card, index }: TechCardProps) {
   const themeStyles =
     card.theme === "blue"
       ? {
-          iconBg: "bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-500/20",
-          arrowColor: "text-blue-600 border-blue-100 bg-blue-50/50 hover:bg-blue-600 hover:text-white",
-          textHover: "group-hover/card:text-blue-600",
-        }
+        iconBg: "bg-gradient-to-br from-blue-500 to-blue-600 shadow-blue-500/20",
+        arrowColor: "text-blue-600 border-blue-100 bg-blue-50/50 hover:bg-blue-600 hover:text-white",
+        textHover: "group-hover/card:text-blue-600",
+      }
       : {
-          iconBg: "bg-gradient-to-br from-green-500 to-green-600 shadow-green-500/20",
-          arrowColor: "text-green-600 border-green-100 bg-green-50/50 hover:bg-green-600 hover:text-white",
-          textHover: "group-hover/card:text-green-600",
-        };
+        iconBg: "bg-gradient-to-br from-green-500 to-green-600 shadow-green-500/20",
+        arrowColor: "text-green-600 border-green-100 bg-green-50/50 hover:bg-green-600 hover:text-white",
+        textHover: "group-hover/card:text-green-600",
+      };
 
   return (
     <motion.div
@@ -182,7 +182,7 @@ function TechCard({ card, index }: TechCardProps) {
 
         {/* 2. Overlapping Card Content Info Panel */}
         <div className="relative z-10 bg-white/95 backdrop-blur-md px-6 pt-9 pb-6 rounded-t-[30px] -mt-8 border-t border-slate-100 flex flex-col justify-between flex-1">
-          
+
           {/* Floating circular technology icon */}
           <div className="absolute -top-7 left-6 z-20">
             <motion.div
@@ -214,7 +214,7 @@ function TechCard({ card, index }: TechCardProps) {
                 {card.description}
               </p>
             </div>
-            
+
             <div className="flex-shrink-0 self-center">
               {/* Sliding Arrow Button */}
               <motion.div
@@ -239,10 +239,10 @@ export default function TechFocusSection() {
 
   return (
     <section className="py-24 bg-white relative overflow-hidden flex flex-col justify-center">
-      
+
       {/* Background visual graphics */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden select-none -z-10">
-        
+
         {/* Soft radial blue glow */}
         <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(37,99,235,0.04)_0%,transparent_70%)]" />
 
@@ -271,7 +271,7 @@ export default function TechFocusSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.span

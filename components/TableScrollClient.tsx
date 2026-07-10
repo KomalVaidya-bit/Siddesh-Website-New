@@ -190,7 +190,7 @@ export default function TableScrollClient() {
             start: "top top",
             end: isMobile ? "+=420%" : "+=380%",
             scrub: isMobile ? 2.2 : 1.8,
-            pin: sticky,
+            pin: true,
             invalidateOnRefresh: true,
           },
         });
@@ -216,10 +216,10 @@ export default function TableScrollClient() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-[420vh] w-full bg-[#eef0ed]">
+    <section ref={sectionRef} className="relative w-full bg-[#eef0ed]">
       <div
         ref={stickyRef}
-        className="sticky top-0 h-screen w-full overflow-hidden bg-[#eef0ed]"
+        className="h-screen w-full overflow-hidden bg-[#eef0ed]"
       >
         <canvas ref={canvasRef} className="h-full w-full" />
       </div>

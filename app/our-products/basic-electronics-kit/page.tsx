@@ -5,7 +5,7 @@ import ProductLandingLayout from "@/components/our-product/ProductLandingLayout"
 const productData = {
   name: "Basic Electronics Kit",
   tagline: "Master embedded electronics projects",
-  image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+  image: "/products-images/basic-electronic-kit.png",
   overview: "Learn the foundational grammar of modern hardware with the Basic Electronics Kit. Centered around breadboards, dynamic resistors, capacitors, transistors, and low-voltage ICs, this kit removes the complexity of programming so students can focus entirely on electrical currents. Learners construct oscillators, signal amplifiers, alarm sirens, and logical gates, building a concrete intuition for hardware design before writing their first line of code.",
   whyChoose: [
     {
@@ -104,8 +104,8 @@ const productData = {
     { label: "Warranty Support", value: "1 Year Component Replacement" }
   ],
   gallery: [
-    "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop"
+    "/products-images/basic-electronic-kit.png",
+    "/products-images/basic-electronic-kit.png"
   ],
   faqs: [
     {
@@ -130,7 +130,7 @@ const productData = {
     },
     {
       name: "Robotics Starter Kit",
-      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/robotics-starter-kit.png",
       slug: "robotics-starter-kit",
       tagline: "Build smart robotic systems easily"
     },

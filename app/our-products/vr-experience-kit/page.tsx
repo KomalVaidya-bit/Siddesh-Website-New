@@ -5,7 +5,7 @@ import ProductLandingLayout from "@/components/our-product/ProductLandingLayout"
 const productData = {
   name: "VR Experience Kit",
   tagline: "Immersive VR-based learning for next-gen education",
-  image: "/ai-innovation-images/virtualimg.jpg",
+  image: "/products-images/vrar-kit.png",
   overview: "The VR Experience Kit shifts classroom learning from passive observation into active immersion. Integrating premium high-definition virtual reality headsets, motion-tracked controllers, and interactive mechatronic simulations, this kit allows students to conduct virtual lab experiments that would normally be too hazardous or expensive. Explore molecules, take interactive tours of planetary systems, or debug electrical setups in a safe, engaging virtual environment.",
   whyChoose: [
     {
@@ -104,9 +104,9 @@ const productData = {
     { label: "Warranty Support", value: "1 Year Hardware Coverage" }
   ],
   gallery: [
-    "/ai-innovation-images/virtualimg.jpg",
-    "/ai-innovation-images/virtualimg.jpg",
-    "/ai-innovation-images/virtualimg.jpg"
+    "/products-images/vrar-kit.png",
+    "/products-images/vrar-kit.png",
+    "/products-images/vrar-kit.png"
   ],
   faqs: [
     {

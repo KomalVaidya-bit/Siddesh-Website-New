@@ -125,19 +125,19 @@ const productData = {
   related: [
     {
       name: "VR Experience Kit",
-      image: "/ai-innovation-images/virtualimg.jpg",
+      image: "/products-images/vrar-kit.png",
       slug: "vr-experience-kit",
       tagline: "Immersive VR-based learning for next-gen education"
     },
     {
       name: "Basic Electronics Kit",
-      image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/basic-electronic-kit.png",
       slug: "basic-electronics-kit",
       tagline: "Master embedded electronics projects"
     },
     {
       name: "Robotics Starter Kit",
-      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/robotics-starter-kit.png",
       slug: "robotics-starter-kit",
       tagline: "Build smart robotic systems easily"
     }

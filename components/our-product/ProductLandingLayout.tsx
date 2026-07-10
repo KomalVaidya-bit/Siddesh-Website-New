@@ -3,14 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ProductShowcase from "./ProductShowcase";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Sparkles, 
-  ArrowRight, 
-  Check, 
-  ChevronDown, 
-  Download, 
-  Calendar, 
+import {
+  Sparkles,
+  ArrowRight,
+  Check,
+  ChevronDown,
+  Download,
+  Calendar,
   Mail,
   Cpu,
   Zap,
@@ -18,7 +19,11 @@ import {
   BookOpen,
   Wrench,
   GraduationCap,
-  Play
+  Play,
+  ShieldCheck,
+  Crosshair,
+  School,
+  Users
 } from "lucide-react";
 
 export interface WhyChooseItem {
@@ -75,6 +80,12 @@ export interface ProductDetailProps {
   gallery: string[];
   faqs: FaqItem[];
   related: RelatedProduct[];
+  featureChips?: { boldText: string; normalText: string }[];
+  overviewHighlights?: { title: string; description: string; icon: string }[];
+  trustBadges?: { boldText: string; normalText: string; icon: string }[];
+  brochureUrl?: string;
+  bookDemoUrl?: string;
+  contactSalesUrl?: string;
 }
 
 const iconMap = {
@@ -85,6 +96,16 @@ const iconMap = {
   wrench: Wrench,
   grad: GraduationCap,
 };
+
+const IndianFlagIcon = () => (
+  <span className="inline-flex w-5 h-5 rounded-full overflow-hidden border border-slate-200/80 flex-shrink-0 relative">
+    <span className="absolute top-0 left-0 w-full h-[33%] bg-[#FF9933]" />
+    <span className="absolute top-[33%] left-0 w-full h-[34%] bg-white flex items-center justify-center">
+      <span className="w-1 h-1 rounded-full bg-[#000080]" />
+    </span>
+    <span className="absolute bottom-0 left-0 w-full h-[33%] bg-[#128807]" />
+  </span>
+);
 
 export default function ProductLandingLayout({
   name,
@@ -100,6 +121,12 @@ export default function ProductLandingLayout({
   gallery,
   faqs,
   related,
+  featureChips,
+  overviewHighlights,
+  trustBadges,
+  brochureUrl,
+  bookDemoUrl,
+  contactSalesUrl,
 }: ProductDetailProps) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
@@ -109,6 +136,106 @@ export default function ProductLandingLayout({
 
   const handleAction = (type: string) => {
     alert(`${type} requested for ${name}! We will get in touch with you shortly.`);
+  };
+
+  // Default fallbacks
+  const defaultChips = [
+    { boldText: "NEP 2020", normalText: "Ready" },
+    { boldText: "Hands-on", normalText: "Learning" },
+    { boldText: "Teacher Guide", normalText: "Included" },
+    { boldText: "Curriculum", normalText: "Aligned" }
+  ];
+  const chipsToRender = featureChips || defaultChips;
+
+  const defaultTrust = [
+    { boldText: "500+", normalText: "Schools Trust Us", icon: "school" },
+    { boldText: "10,000+", normalText: "Students Impacted", icon: "students" },
+    { boldText: "NEP 2020", normalText: "Aligned", icon: "nep" },
+    { boldText: "Made in", normalText: "India", icon: "india" }
+  ];
+  const trustToRender = trustBadges || defaultTrust;
+
+  const defaultHighlights = features.slice(0, 4).map((f, index) => {
+    let icon = "device";
+    if (index === 0) icon = "device";
+    else if (index === 1) icon = "tracking";
+    else if (index === 2) icon = "simulations";
+    else icon = "plug";
+    return {
+      title: f.title,
+      description: f.description,
+      icon: icon
+    };
+  });
+  const highlightsToRender = overviewHighlights || defaultHighlights;
+
+  // Icon mapping helpers
+  const getChipStyles = (index: number) => {
+    switch (index % 4) {
+      case 0:
+        return { Icon: ShieldCheck, color: "text-[#2563eb]", bg: "bg-[#eff6ff]", border: "border-[#dbeafe]" };
+      case 1:
+        return { Icon: Wrench, color: "text-[#059669]", bg: "bg-[#ecfdf5]", border: "border-[#d1fae5]" };
+      case 2:
+        return { Icon: GraduationCap, color: "text-[#3b82f6]", bg: "bg-[#eff6ff]", border: "border-[#dbeafe]" };
+      default:
+        return { Icon: Layers, color: "text-[#d97706]", bg: "bg-[#fffbeb]", border: "border-[#fef3c7]" };
+    }
+  };
+
+  const getHighlightIcon = (iconName: string) => {
+    switch (iconName) {
+      case "device":
+      case "hardware":
+        return Cpu;
+      case "tracking":
+        return Crosshair;
+      case "simulations":
+      case "content":
+        return Play;
+      case "plug":
+      case "connectivity":
+      default:
+        return Zap;
+    }
+  };
+
+  const getTrustIcon = (iconName: string) => {
+    switch (iconName) {
+      case "school":
+        return School;
+      case "students":
+        return Users;
+      case "nep":
+        return ShieldCheck;
+      default:
+        return ShieldCheck;
+    }
+  };
+
+  const renderTrustBadge = (badge: { boldText: string; normalText: string; icon: string }, index: number) => {
+    if (badge.icon === "india") {
+      return (
+        <div key={index} className="flex items-center gap-3">
+          <IndianFlagIcon />
+          <span className="text-xs text-slate-600 leading-tight">
+            <span className="font-bold text-slate-800">{badge.boldText}</span> {badge.normalText}
+          </span>
+        </div>
+      );
+    }
+
+    const Icon = getTrustIcon(badge.icon);
+    return (
+      <div key={index} className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-full border border-blue-100 bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+          <Icon className="w-4 h-4" />
+        </div>
+        <span className="text-xs text-slate-600 leading-tight">
+          <span className="font-bold text-slate-800">{badge.boldText}</span> {badge.normalText}
+        </span>
+      </div>
+    );
   };
 
   return (
@@ -122,21 +249,26 @@ export default function ProductLandingLayout({
           1. HERO BANNER
           ========================================== */}
       <section className="relative pt-[140px] sm:pt-[150px] md:pt-[160px] pb-16 z-10 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Subtle grid pattern background on Hero */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.2px,transparent_1.2px)] [background-size:16px_16px] opacity-40 z-0 pointer-events-none" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
           {/* Hero Left Content */}
           <div className="lg:col-span-7 flex flex-col text-left">
+            {/* Pill Badge */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-blue-50/80 border border-blue-100/60 px-4 py-1.5 rounded-full mb-6 shadow-sm w-fit"
+              className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100/60 px-4 py-1.5 rounded-full mb-6 shadow-sm w-fit"
             >
-              <Sparkles className="w-4 h-4 text-blue-500" />
-              <span className="text-blue-600 text-xs font-extrabold tracking-[0.12em] uppercase">
+              <Sparkles className="w-3.5 h-3.5 text-blue-500" />
+              <span className="text-blue-600 text-[10px] sm:text-xs font-extrabold tracking-[0.14em] uppercase">
                 ThinkSphere 360 Edition
               </span>
             </motion.div>
 
+            {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -146,63 +278,101 @@ export default function ProductLandingLayout({
               {name}
             </motion.h1>
 
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-slate-500 text-lg md:text-xl mt-6 max-w-xl leading-relaxed font-medium"
+              className="text-slate-500 text-base sm:text-lg md:text-xl mt-4 max-w-xl leading-relaxed font-medium"
             >
               {tagline}
             </motion.p>
+
+            {/* Four Premium Feature Chips */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.1, delayChildren: 0.3 }
+                }
+              }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-8 w-full max-w-2xl"
+            >
+              {chipsToRender.map((chip, idx) => {
+                const styles = getChipStyles(idx);
+                const ChipIcon = styles.Icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    variants={{
+                      hidden: { opacity: 0, y: 15 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }
+                    }}
+                    whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                    className="bg-white/90 backdrop-blur-sm border border-slate-100 rounded-2xl p-3 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.04)] flex items-center gap-3 transition-all duration-300"
+                  >
+                    <div className={`w-8 h-8 rounded-xl ${styles.bg} ${styles.border} border flex items-center justify-center ${styles.color} flex-shrink-0`}>
+                      <ChipIcon className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] sm:text-xs text-slate-600 leading-tight">
+                      <span className="font-bold text-slate-800 block">{chip.boldText}</span>
+                      {chip.normalText}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4 mt-8"
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="flex flex-col sm:flex-row gap-3.5 mt-8 w-full sm:w-auto"
             >
-              <button 
+              <button
                 onClick={() => handleAction("Book Demo")}
-                className="bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold py-3.5 px-6 rounded-2xl flex items-center gap-2 transition shadow-lg shadow-blue-600/10"
+                className="w-full sm:w-auto py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 bg-blue-600 text-white hover:bg-blue-700 active:scale-95 transition shadow-lg shadow-blue-500/20"
               >
                 <Calendar className="w-4 h-4" />
-                Book Demo
+                <span>Book Demo</span>
               </button>
-              <button 
+              <button
                 onClick={() => handleAction("Download Brochure")}
-                className="bg-white hover:bg-slate-50 active:scale-95 text-slate-700 font-bold py-3.5 px-6 rounded-2xl flex items-center gap-2 transition border border-slate-200 shadow-sm"
+                className="w-full sm:w-auto py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 active:scale-95 transition shadow-sm"
               >
                 <Download className="w-4 h-4" />
-                Download Brochure
+                <span>Download Brochure</span>
               </button>
-              <button 
+              <button
                 onClick={() => handleAction("Contact Sales")}
-                className="bg-[#0f172a] hover:bg-slate-800 active:scale-95 text-white font-bold py-3.5 px-6 rounded-2xl flex items-center gap-2 transition shadow-lg"
+                className="w-full sm:w-auto py-3.5 px-6 rounded-2xl font-bold flex items-center justify-center gap-2 bg-[#0f172a] text-white hover:bg-slate-800 active:scale-95 transition shadow-lg"
               >
                 <Mail className="w-4 h-4" />
-                Contact Sales
+                <span>Contact Sales</span>
               </button>
+            </motion.div>
+
+            {/* Trust Row */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.55 }}
+              className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-5 sm:gap-8 mt-10 w-full border-t border-slate-100 pt-6"
+            >
+              {trustToRender.map((badge, idx) => renderTrustBadge(badge, idx))}
             </motion.div>
           </div>
 
-          {/* Hero Right Product Image */}
-          <div className="lg:col-span-5 flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="relative aspect-square w-full max-w-[420px] bg-white border border-slate-100 rounded-[32px] overflow-hidden p-8 shadow-xl flex items-center justify-center"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-transparent" />
-              <Image
-                src={image}
-                alt={name}
-                fill
-                className="object-contain p-6 relative z-10"
-                priority
-              />
-            </motion.div>
+          {/* Hero Right Product Showcase */}
+          <div className="lg:col-span-5 w-full flex justify-center">
+            <ProductShowcase
+              productImage={image}
+              productName={name}
+            />
           </div>
         </div>
       </section>
@@ -210,20 +380,56 @@ export default function ProductLandingLayout({
       {/* ==========================================
           2. PRODUCT OVERVIEW
           ========================================== */}
-      <section className="relative py-16 z-10 max-w-7xl mx-auto px-6">
+      <section className="relative py-12 z-10 max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white border border-slate-100 p-8 md:p-12 rounded-[32px] shadow-sm max-w-5xl mx-auto"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="bg-white border border-slate-100/90 p-8 md:p-12 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.02)] max-w-5xl mx-auto"
         >
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#0f172a] mb-6">
-            Product Overview
-          </h2>
-          <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium">
-            {overview}
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Overview Left Side */}
+            <div className="lg:col-span-5 flex flex-col text-left">
+              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-6 flex-shrink-0">
+                <Layers className="w-5.5 h-5.5" />
+              </div>
+              <h2 className="text-3xl font-extrabold text-[#0f172a] mb-6 tracking-tight">
+                Product Overview
+              </h2>
+              <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium">
+                {overview}
+              </p>
+            </div>
+
+            {/* Overview Right Side (Highlight Blocks) */}
+            <div className="lg:col-span-7 w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {highlightsToRender.map((highlight, idx) => {
+                  const HighlightIcon = getHighlightIcon(highlight.icon);
+                  return (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                      className="bg-slate-50/50 border border-slate-100/70 p-5 rounded-[24px] shadow-sm flex items-start gap-4 transition-all duration-300"
+                    >
+                      <div className="w-11 h-11 rounded-full bg-white border border-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-sm hover:scale-105 transition-transform duration-200">
+                        <HighlightIcon className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="text-left">
+                        <h3 className="text-sm font-bold text-slate-800 mb-1.5 tracking-tight">
+                          {highlight.title}
+                        </h3>
+                        <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                          {highlight.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </motion.div>
       </section>
 
@@ -291,7 +497,7 @@ export default function ProductLandingLayout({
       {/* ==========================================
           5. WHAT'S INSIDE THE KIT
           ========================================== */}
-      <section className="relative py-16 z-10 max-w-7xl mx-auto px-6">
+      {/* <section className="relative py-16 z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-[#0f172a]">
             What's Inside the Kit
@@ -317,7 +523,7 @@ export default function ProductLandingLayout({
             </tbody>
           </table>
         </div>
-      </section>
+      </section> */}
 
       {/* ==========================================
           6. LEARNING OUTCOMES
@@ -367,13 +573,12 @@ export default function ProductLandingLayout({
               className="bg-white border border-slate-100 p-6 rounded-[24px] shadow-sm flex flex-col justify-between h-full hover:shadow-lg transition-all duration-300"
             >
               <div>
-                <span className={`text-2xs font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-md border w-fit block mb-4 ${
-                  proj.complexity === "Beginner" 
+                <span className={`text-2xs font-extrabold tracking-wider uppercase px-2.5 py-1 rounded-md border w-fit block mb-4 ${proj.complexity === "Beginner"
                     ? "bg-blue-50 border-blue-100 text-blue-600"
                     : proj.complexity === "Intermediate"
-                    ? "bg-amber-50 border-amber-100 text-amber-600"
-                    : "bg-rose-50 border-rose-100 text-rose-600"
-                }`}>
+                      ? "bg-amber-50 border-amber-100 text-amber-600"
+                      : "bg-rose-50 border-rose-100 text-rose-600"
+                  }`}>
                   {proj.complexity} Project
                 </span>
                 <h3 className="text-lg font-bold text-slate-800 tracking-tight mb-2">
@@ -395,7 +600,7 @@ export default function ProductLandingLayout({
       {/* ==========================================
           8. TECHNICAL SPECIFICATIONS
           ========================================== */}
-      <section className="relative py-16 z-10 max-w-7xl mx-auto px-6">
+      {/* <section className="relative py-16 z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-[#0f172a]">
             Technical Specifications
@@ -411,7 +616,7 @@ export default function ProductLandingLayout({
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ==========================================
           9. GALLERY
@@ -453,7 +658,7 @@ export default function ProductLandingLayout({
           {faqs.map((faq, idx) => {
             const isOpen = activeFaq === idx;
             return (
-              <div 
+              <div
                 key={idx}
                 className="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm transition-all duration-300"
               >
@@ -543,7 +748,7 @@ export default function ProductLandingLayout({
           {/* Inner decorative gradients */}
           <div className="absolute top-[-20%] left-[-10%] w-[300px] h-[300px] rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
           <div className="absolute bottom-[-20%] right-[-10%] w-[300px] h-[300px] rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
-          
+
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
             Ready to Transform Your Lab?
           </h2>
@@ -551,14 +756,14 @@ export default function ProductLandingLayout({
             Contact us today to receive customized quotations and demo schedules for {name}.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button 
+            <button
               onClick={() => handleAction("Book Demo")}
               className="bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold py-3.5 px-8 rounded-2xl flex items-center gap-2 transition"
             >
               <Calendar className="w-4 h-4" />
               Book Demo
             </button>
-            <button 
+            <button
               onClick={() => handleAction("Contact Sales")}
               className="bg-white/10 hover:bg-white/20 active:scale-95 text-white font-bold py-3.5 px-8 rounded-2xl flex items-center gap-2 transition border border-white/10"
             >

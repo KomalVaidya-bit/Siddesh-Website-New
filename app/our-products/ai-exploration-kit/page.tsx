@@ -131,7 +131,7 @@ const productData = {
     },
     {
       name: "Robotics Starter Kit",
-      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/robotics-starter-kit.png",
       slug: "robotics-starter-kit",
       tagline: "Build smart robotic systems easily"
     },

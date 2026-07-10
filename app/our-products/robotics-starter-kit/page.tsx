@@ -5,7 +5,7 @@ import ProductLandingLayout from "@/components/our-product/ProductLandingLayout"
 const productData = {
   name: "Robotics Starter Kit",
   tagline: "Build smart robotic systems easily",
-  image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+  image: "/products-images/robotics-starter-kit.png",
   overview: "The Robotics Starter Kit is an interactive introduction to mechanical engineering, kinematics, and electronic design. Featuring precision servo motors, heavy-duty structural frames, and customizable wheels, this kit enables students to assemble line-following rovers, obstacle-avoiding cars, and multi-jointed robotic arms. By programming real-time motor outputs and processing tactile switch inputs, learners understand modern industrial robotics basics.",
   whyChoose: [
     {
@@ -104,8 +104,8 @@ const productData = {
     { label: "Warranty Support", value: "1 Year Structural Warranty" }
   ],
   gallery: [
-    "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop"
+    "/products-images/robotics-starter-kit.png",
+    "/products-images/robotics-starter-kit.png"
   ],
   faqs: [
     {
@@ -136,7 +136,7 @@ const productData = {
     },
     {
       name: "Basic Electronics Kit",
-      image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/basic-electronic-kit.png",
       slug: "basic-electronics-kit",
       tagline: "Master embedded electronics projects"
     }

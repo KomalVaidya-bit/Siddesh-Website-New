@@ -136,13 +136,13 @@ const productData = {
     },
     {
       name: "Robotics Starter Kit",
-      image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/robotics-starter-kit.png",
       slug: "robotics-starter-kit",
       tagline: "Build smart robotic systems easily"
     },
     {
       name: "Basic Electronics Kit",
-      image: "https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop",
+      image: "/products-images/basic-electronic-kit.png",
       slug: "basic-electronics-kit",
       tagline: "Master embedded electronics projects"
     }
