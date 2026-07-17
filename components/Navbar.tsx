@@ -65,7 +65,7 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
       >
         <div className="mx-auto flex w-[92%] lg:w-[94%] max-w-7xl items-center justify-between py-4 md:py-5">
           <nav className="relative flex w-full items-center justify-between rounded-[24px] border border-white/40 bg-white/80 pl-4 md:pl-6 pr-4 md:pr-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] backdrop-blur-md h-[80px] md:h-[88px]">
-            
+
             {/* Logos Group */}
             <div className="flex items-center gap-2.5 h-full">
               {/* Siddesh Logo */}
@@ -219,7 +219,7 @@ export default function Navbar({ floating = false, overlay = false }: NavbarProp
               className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col gap-4 bg-white px-6 py-8 shadow-[0_20px_60px_rgba(15,23,42,0.25)] md:hidden"
             >
               <div className="flex items-center justify-between">
-                <span className="text-lg font-semibold text-[#20306f]">Siddesh</span>
+                <span className="text-lg font-semibold text-[#20306f]">Siddesh Tech</span>
                 <button
                   type="button"
                   className="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600"
