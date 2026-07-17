@@ -3,6 +3,8 @@ import { Sora } from "next/font/google";
 import type { ReactNode } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import FloatingWhatsapp from "../components/FloatingWhatsapp";
+import FloatingAiAssistant from "../components/FloatingAiAssistant";
 import "./globals.css";
 
 const sora = Sora({
@@ -26,7 +28,11 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <FloatingWhatsapp />
+        <FloatingAiAssistant />
       </body>
     </html>
   );
 }
+
+
